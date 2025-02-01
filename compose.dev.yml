@@ -1,0 +1,11 @@
+services:
+  proxy:
+    container_name: pingpath-proxy-dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.proxy.dev
+    ports:
+      - 80:80
+      - 443:443
+    volumes:
+      - .:/app
