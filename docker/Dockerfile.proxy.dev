@@ -1,0 +1,9 @@
+FROM node:lts-alpine AS runtime
+RUN apk add --no-cache caddy
+RUN npm install -g concurrently
+WORKDIR /app
+
+ENTRYPOINT ["npx", "concurrently", \
+    "\"cd frontend && npm i && npx vite --port 8080\"", \
+    "\"caddy run --config docker/Caddyfile.dev --adapter caddyfile --watch\""]
+
