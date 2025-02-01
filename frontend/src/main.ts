@@ -7,7 +7,10 @@ import "./main.css";
 
 const router = createRouter({
   history: createWebHistory(),
-  routes: [{ path: "/", component: Index }, { path: "/profile", component: Profile }],
+  routes: [ 
+      { path: "/", component: Index }, 
+      { path: "/profile", component: Profile }
+    ],
 });
 
 createApp(RouterView).use(router).mount("body");
