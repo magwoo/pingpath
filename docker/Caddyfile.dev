@@ -1,4 +1,13 @@
-:80 {
+{
+	local_certs
+}
+
+localhost {
+	handle_path /api/* {
+	    uri strip_prefix /api
+		reverse_proxy api
+	}
+	
 	reverse_proxy localhost:8080
 }
 

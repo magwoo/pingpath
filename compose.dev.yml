@@ -8,4 +8,14 @@ services:
       - 80:80
       - 443:443
     volumes:
-      - .:/app
+      - ./frontend:/app
+      - ./docker/Caddyfile.dev:/etc/Caddyfile
+      - ./data/caddy:/data/caddy
+
+  api:
+    container_name: pingpath-api-dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.api.dev
+    volumes:
+      - ./backend:/app
