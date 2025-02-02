@@ -20,7 +20,13 @@ import GitHub from "./svg/GitHub.vue";
         <p>Pingpath</p>
       </Link>
       <Link href="/tarif">Тарифы</Link>
-      <Link href="/profile">О нас</Link>
+      <Link href="/about">О нас</Link>
     </nav>
+    <Button>
+      <template #before>
+        <GitHub class="size-5"></GitHub>
+        Войти
+      </template>
+    </Button>
   </section>
 </template>
