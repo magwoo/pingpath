@@ -1,27 +1,53 @@
 # Backend api description
 
-Api uses _http_ as proto and _json_ as content type
+Api uses **http** as proto and **json** as content type
 
-## Profile _`in dev`_
+# Authorization
+
+Authorization with github and dev for test
+
+## `POST` `/signin` _in dev_
+
+_Description in progress..._
+
+## `POST` `/signin/dev` _in dev_
+
+Dev signin for test profile features avaliable only at debug build
+
+### request
+
+```text
+POST /signin/dev HTTP/1.1
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Set-Cookie: [some session token]
+```
+
+# Profile
 
 Data about user profile
 
-### General `/profile`
-
-Get general profile data
-
-#### Features
+## Features
 
 For all requests outdate, invalid and without session token, response will be like this:
+
+### response
 
 ```text
 HTTP/1.1 401 Unauthorized
 ...
 ```
 
-#### `GET` general profile data
+## `GET` `/profile` _in dev_
 
-**request:**
+Get general profile data
+
+### request
 
 ```text
 GET /profile HTTP/1.1
@@ -29,7 +55,7 @@ Cookie: [some active session token]
 ...
 ```
 
-**response:**
+### response
 
 ```text
 HTTP/1.1 200 OK
@@ -43,13 +69,9 @@ Content-Type: application/json
 }
 ```
 
-### Username `/profile/username`
+## `GET` `/profile/username` _in dev_
 
-Get only profile username
-
-#### `GET` profile username
-
-**request:**
+### request
 
 ```text
 GET /profile HTTP/1.1
@@ -57,7 +79,7 @@ Cookie: [some active session token]
 ...
 ```
 
-**response:**
+### response
 
 ```text
 HTTP/1.1 200 OK
