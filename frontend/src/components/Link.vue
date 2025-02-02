@@ -1,20 +1,27 @@
 <script setup lang="ts">
-const LINK_VARIANTS = {
-    "accent": "text-accent text-xl",
-    "neutral": "text-neutral/75 text-xl"
-}
+import { ref } from "vue";
 
 interface Props {
-    variant?: keyof typeof LINK_VARIANTS;
+  href?: string;
 }
 
-const { variant = "neutral" } = defineProps<Props>();
+const { href = "/" } = defineProps<Props>();
+
+const isActive = ref(window.location.pathname == href);
+
+window.onhashchange = () => {
+  isActive.value = window.location.pathname == href;
+};
 </script>
 
 <template>
-    <RouterLink to="/" class="flex gap-2" :class="LINK_VARIANTS[variant]">
-        <slot name="before"></slot>
-        <slot></slot>
-        <slot name="after"></slot>
-    </RouterLink>
+  <RouterLink
+    :to="href"
+    class="flex items-center gap-2 text-xl"
+    :class="isActive ? 'text-accent' : 'text-neutral/75 hover:text-neutral'"
+  >
+    <slot name="before" :state="isActive"></slot>
+    <slot></slot>
+    <slot name="after" :state="isActive"></slot>
+  </RouterLink>
 </template>

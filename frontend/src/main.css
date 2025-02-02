@@ -6,6 +6,8 @@
 @theme {
   --font-roboto: "Roboto Mono", serif;
 
+  --container-content: 1248px;
+
   --color-accent: oklch(37.17% 0.0392 257.29);
   --color-neutral: oklch(55.34% 0.0116 58.07);
   --color-success: oklch(72.27% 0.192 149.58);
