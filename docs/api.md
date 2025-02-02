@@ -8,11 +8,13 @@ Data about user profile
 
 ### General `/profile`
 
+Get general profile data
+
 #### Features
 
 For all requests outdate, invalid and without session token, response will be like this:
 
-```http
+```text
 HTTP/1.1 401 Unauthorized
 ...
 ```
@@ -21,7 +23,7 @@ HTTP/1.1 401 Unauthorized
 
 **request:**
 
-```http
+```text
 GET /profile HTTP/1.1
 Cookie: [some active session token]
 ...
@@ -29,7 +31,7 @@ Cookie: [some active session token]
 
 **response:**
 
-```json
+```text
 HTTP/1.1 200 OK
 Content-Type: application/json
 ...
@@ -38,5 +40,30 @@ Content-Type: application/json
   "iconUrl": "https://...", // string
   "type": "Full",           // "Full"
   "addressAmount": 12       // unsigned number
+}
+```
+
+### Username `/profile/username`
+
+Get only profile username
+
+#### `GET` profile username
+
+**request:**
+
+```text
+GET /profile HTTP/1.1
+Cookie: [some active session token]
+...
+```
+
+**response:**
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "nickname": "boris2001",  // string
 }
 ```
