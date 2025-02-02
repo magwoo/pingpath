@@ -2,6 +2,8 @@
 
 Project description in progress..
 
+> If you want to contribute project, learn [contribution guide](/CONTRIBUTING.md)
+
 # Setup project
 
 _you must have docker to run the project_
