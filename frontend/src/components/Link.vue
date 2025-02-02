@@ -8,8 +8,7 @@ interface Props {
     variant: keyof typeof LINK_VARIANTS;
 }
 
-const {variant} = defineProps<Props>();
-
+const { variant } = defineProps<Props>();
 </script>
 
 <template>
