@@ -58,6 +58,19 @@ dependencies = [
 ]
 
 [[package]]
+name = "axum-cookie"
+version = "0.1.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "95c4febbfae491fa744b849c66530d4eb71b9cce1ee39ea080a44065aa3d0769"
+dependencies = [
+ "axum-core",
+ "cookie-rs",
+ "http",
+ "tower-layer",
+ "tower-service",
+]
+
+[[package]]
 name = "axum-core"
 version = "0.5.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -83,6 +96,7 @@ version = "0.1.0"
 dependencies = [
  "anyhow",
  "axum",
+ "axum-cookie",
  "tokio",
 ]
 
@@ -112,6 +126,12 @@ name = "cfg-if"
 version = "1.0.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "baf1de4339761588bc0619e3cbc0120ee582ebb74b53b4efbf79117bd2da40fd"
+
+[[package]]
+name = "cookie-rs"
+version = "0.2.1"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "c1ee006414d709940b650c419ab49a32b0c5e3187c2930c9fda422ffc6c590b5"
 
 [[package]]
 name = "fnv"
