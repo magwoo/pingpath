@@ -17,7 +17,7 @@ interface Props {
     pattern?: boolean;
 }
 
-const { size="md", variant="accent" } = defineProps<Props>();
+const { size="md", variant="accent", pattern } = defineProps<Props>();
 </script>
 
 <template>
