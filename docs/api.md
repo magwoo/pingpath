@@ -6,18 +6,18 @@ Api uses **http** as proto and **json** as content type
 
 Authorization with github and dev for test
 
-## `POST` `/signin` _in dev_
+## `POST` `/auth` _in dev_
 
 _Description in progress..._
 
-## `POST` `/signin/dev` _in dev_
+## `POST` `/auth/dev` _in dev_
 
 Dev signin for test profile features avaliable only at debug build
 
 ### request
 
 ```text
-POST /signin/dev HTTP/1.1
+POST /auth/dev HTTP/1.1
 ...
 ```
 
