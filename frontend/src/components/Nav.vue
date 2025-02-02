@@ -25,7 +25,7 @@ import HStack from "./HStack.vue";
     </HStack>
     <Button>
       <template #before>
-        <GitHub class="size-5"></GitHub>
+        <GitHub class="size-5" />
       </template>
       Войти
     </Button>
