@@ -2,6 +2,9 @@
 
 Thank you for your interest in contributing to this project! To ensure a smooth and efficient workflow, please follow these guidelines and we won't mind if you help improve this guide.
 
+## 👷‍♂️ Api docs
+Check api docs here [api.md](/docs/api.md)
+
 ---
 
 ## 📌 1. How to Take an Issue
@@ -10,7 +13,7 @@ Thank you for your interest in contributing to this project! To ensure a smooth 
 1. Find an open issue in the **Issues** tab.
 2. Leave a comment: _"I'll take this!"_
 3. A maintainer will assign you to the issue (or you can self-assign if possible).
-4. Create a feature branch (`feature/issue-42-api-improve`) and start working.
+4. Create a feature branch (`42-api-improve`) and start working.
 5. Once done, submit a **Pull Request (PR)** and link it to the issue (`Closes #42`).
 6. After the review, the PR will be merged, and the issue will be closed automatically.
 
@@ -28,13 +31,13 @@ Thank you for your interest in contributing to this project! To ensure a smooth 
    ```
 4. **Create a new branch**:
    ```sh
-   git checkout -b feature/my-awesome-feature
+   git checkout -b 1-my-awesome-feature
    ```
 5. **Make your changes, commit, and push**:
    ```sh
    git add .
    git commit -m "Added a cool feature"
-   git push origin feature/my-awesome-feature
+   git push origin 1-my-awesome-feature
    ```
 6. **Create a Pull Request (PR)** to the original repository.
 7. Before making another contribution, **sync your fork**:
@@ -49,20 +52,20 @@ Thank you for your interest in contributing to this project! To ensure a smooth 
 
 ## 🔧 2. Branch Naming Conventions
 - Use descriptive branch names based on issue numbers:
-  - Features: `feature/{issue-number}-{short-description}`  
-    _Example: `feature/42-api-improve`_
-  - Bug fixes: `fix/{issue-number}-{short-description}`  
-    _Example: `fix/88-login-bug`_
+  - Features: `{issue-number}-{short-description}`  
+    _Example: `42-api-improve`_
+  - Bug fixes: `{issue-number}-{short-description}`  
+    _Example: `88-login-bug`_
 - If multiple developers work on the same issue:
-  - One creates the main feature branch (`feature/42-main`).
-  - Others create sub-branches (`feature/42-helper`) and merge into the main feature branch before the final PR.
+  - One creates the main feature branch (`42-main`).
+  - Others create sub-branches (`42-helper`) and merge into the main feature branch before the final PR.
 
 ---
 
 ## 🚀 3. Collaboration on Large Features
 - If multiple developers work on the same feature:
   - **Divide tasks** (e.g., one works on backend, another on UI).
-  - **Use a shared feature branch** (`feature/issue-42-main`) with sub-branches.
+  - **Use a shared feature branch** (`42-main`) with sub-branches.
   - **Sync regularly** (`git pull --rebase` before pushing).
   - **Discuss progress in the Issue comments.**
 
