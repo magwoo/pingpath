@@ -10,7 +10,7 @@ Authorization with github and dev for test
 
 _Description in progress..._
 
-## `POST` `/auth/dev` _in dev_
+## `POST` `/auth/dev`
 
 Dev signin for test profile features avaliable only at debug build
 
@@ -43,7 +43,7 @@ HTTP/1.1 401 Unauthorized
 ...
 ```
 
-## `GET` `/profile` _in dev_
+## `GET` `/profile`
 
 Get general profile data
 
@@ -69,7 +69,7 @@ Content-Type: application/json
 }
 ```
 
-## `GET` `/profile/username` _in dev_
+## `GET` `/profile/username`
 
 ### request
 
