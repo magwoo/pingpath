@@ -62,7 +62,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 {
-  "nickname": "boris2001",  // string
+  "username": "boris2001",  // string
   "iconUrl": "https://...", // string
   "type": "Full",           // "Full"
   "addressAmount": 12       // unsigned number
@@ -86,6 +86,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 {
-  "nickname": "boris2001",  // string
+  "username": "boris2001",  // string
 }
 ```
