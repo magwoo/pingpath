@@ -4,9 +4,11 @@ const LINK_VARIANTS = {
     "neutral": "text-neutral/75 text-xl"
 }
 
-const { variant = "neutral" } = defineProps<{
+interface Props {
     variant?: keyof typeof LINK_VARIANTS;
-}>();
+}
+
+const { variant = "neutral" } = defineProps<Props>();
 </script>
 
 <template>
