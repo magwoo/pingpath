@@ -1,4 +1,4 @@
-use axum::http::StatusCode;
+use axum::http::{Request, StatusCode};
 use axum::response::IntoResponse;
 use axum::routing::post;
 use axum::Router;
@@ -18,4 +18,17 @@ async fn dev_auth(cookie: CookieManager) -> Result<impl IntoResponse, StatusCode
     cookie.add(("token", DEV_TOKEN).into());
 
     Ok(StatusCode::OK)
+}
+
+pub async fn auth_middleware<B>(
+    cookie: CookieManager,
+    req: Request<B>,
+) -> Result<Request<B>, StatusCode> {
+    let token = cookie.get("token").ok_or(StatusCode::UNAUTHORIZED)?;
+
+    if token.value() == DEV_TOKEN {
+        return Ok(req);
+    }
+
+    Err(StatusCode::UNAUTHORIZED)
 }
