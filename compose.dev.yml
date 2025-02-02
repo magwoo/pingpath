@@ -14,8 +14,11 @@ services:
 
   api:
     container_name: pingpath-api-dev
+    command: client-api
     build:
       context: .
       dockerfile: docker/Dockerfile.api.dev
     volumes:
       - ./backend:/app
+    environment:
+      PACKAGE_NAME: client-api
