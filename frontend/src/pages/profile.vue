@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import NavPanel from "@/components/NavPanel.vue";
+import NavPanel from "@/components/Nav.vue";
 </script>
 
 <template>

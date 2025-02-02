@@ -3,10 +3,11 @@ import Link from "./Link.vue";
 import Logo from "./svg/Logo.vue";
 import Button from "./Button.vue";
 import GitHub from "./svg/GitHub.vue";
+import HStack from "./HStack.vue";
 </script>
 <template>
-  <section class="my-12 flex justify-between">
-    <nav class="flex gap-10">
+  <nav class="my-12 flex justify-between">
+    <HStack class="gap-10">
       <Link class="group">
         <template #before="isActive" v-slot="isActive">
           <Logo
@@ -17,16 +18,16 @@ import GitHub from "./svg/GitHub.vue";
             "
           ></Logo>
         </template>
-        <p>Pingpath</p>
+        Pingpath
       </Link>
       <Link href="/tarif">Тарифы</Link>
       <Link href="/about">О нас</Link>
-    </nav>
+    </HStack>
     <Button>
       <template #before>
         <GitHub class="size-5"></GitHub>
-        Войти
       </template>
+      Войти
     </Button>
-  </section>
+  </nav>
 </template>

@@ -1,7 +1,7 @@
 <script setup lang="ts">
-import NavPanel from "@/components/NavPanel.vue";
+import Nav from "@/components/Nav.vue";
 </script>
 
 <template>
-  <NavPanel></NavPanel>
+  <Nav></Nav>
 </template>
