@@ -1,8 +1,4 @@
-{
-	local_certs
-}
-
-localhost {
+http://localhost {
 	handle_path /api/* {
 	    uri strip_prefix /api
 		reverse_proxy api

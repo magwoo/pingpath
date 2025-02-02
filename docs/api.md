@@ -6,18 +6,18 @@ Api uses **http** as proto and **json** as content type
 
 Authorization with github and dev for test
 
-## `POST` `/signin` _in dev_
+## `POST` `/auth` _in dev_
 
 _Description in progress..._
 
-## `POST` `/signin/dev` _in dev_
+## `POST` `/auth/dev` _in dev_
 
 Dev signin for test profile features avaliable only at debug build
 
 ### request
 
 ```text
-POST /signin/dev HTTP/1.1
+POST /auth/dev HTTP/1.1
 ...
 ```
 
@@ -62,7 +62,7 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 {
-  "nickname": "boris2001",  // string
+  "username": "boris2001",  // string
   "iconUrl": "https://...", // string
   "type": "Full",           // "Full"
   "addressAmount": 12       // unsigned number
@@ -86,6 +86,6 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 {
-  "nickname": "boris2001",  // string
+  "username": "boris2001",  // string
 }
 ```
