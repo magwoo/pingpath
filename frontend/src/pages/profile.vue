@@ -5,7 +5,14 @@ import VStack from "@/components/VStack.vue";
 import Text from "@/components/Text.vue";
 import { onMounted, ref } from "vue";
 
-const data = ref();
+interface ProfileInfo {
+  username: string;
+  iconUrl: string;
+  addressAmount: number;
+  type: "Full";
+}
+
+const data = ref<ProfileInfo>();
 
 onMounted(async () => {
   await fetch("/api/auth/dev", { method: "POST" });
@@ -14,6 +21,10 @@ onMounted(async () => {
   data.value = JSON.parse(await response.json());
   console.log(data.value);
 });
+
+const type = {
+  Full: "Полный",
+};
 </script>
 
 <template>
@@ -28,6 +39,27 @@ onMounted(async () => {
         <Text size="md" variant="accent">Всего адресов:</Text>
         <Text size="md" variant="accent">Профиль GitHub:</Text>
         <Text size="md" variant="accent">Тариф:</Text>
+      </VStack>
+      <VStack class="gap-6 text-left">
+        <Text size="md" variant="neutral/75" v-if="data">{{
+          data.username
+        }}</Text>
+        <Text size="md" variant="neutral/75" v-if="data">{{
+          data.addressAmount
+        }}</Text>
+        <Text
+          size="md"
+          variant="neutral/75"
+          class="hover:underline"
+          v-if="data"
+        >
+          <a :href="`github/${data.username} `">{{
+            `github/${data.username} `
+          }}</a></Text
+        >
+        <Text size="md" variant="neutral/75" v-if="data">{{
+          type[data.type]
+        }}</Text>
       </VStack>
     </HStack>
   </VStack>
