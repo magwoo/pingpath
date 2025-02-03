@@ -2,7 +2,7 @@
 const BUTTON_VARIANTS = {
   accent: "bg-accent text-white cursor-pointer",
   neutral: "bg-neutral/10 cursor-pointer text-neutral/75",
-  transparent: "bg-transparent text-neutral/75",
+  transparent: "bg-transparent cursor-pointer text-neutral/75",
 };
 
 const BUTTON_SIZES = {

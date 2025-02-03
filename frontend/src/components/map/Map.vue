@@ -9,8 +9,7 @@ const { convertToRatio } = useMap();
 const allPoints = [
   convertToRatio(-42.187956, 146.496657),
   convertToRatio(33.958073, -114.34227),
-  convertToRatio(35.338997, 25.137026),
-  convertToRatio(47.496952, 19.063225),
+  convertToRatio(-51.981497, -59.324327),
 ];
 </script>
 
@@ -25,16 +24,15 @@ const allPoints = [
         v-for="(point, id) in allPoints"
         :key="id"
         @click="console.log(123)"
-        class="group absolute -mt-5 -ml-5 size-10 transform cursor-pointer rounded-full"
+        class="group absolute -mt-5 -ml-5 size-8 cursor-pointer rounded-full"
         :style="[[`left: ${point.x! * 100}%`], [`top: ${point.y! * 100}%;`]]"
       >
         <div
-          class="bg-accent relative mx-auto flex size-2 justify-center rounded-full"
-        >
-          <MessagePopup
-            class="invisible absolute -top-28 transition-all group-hover:visible"
-          />
-        </div>
+          class="bg-accent relative -z-20 mx-auto flex size-2 justify-center rounded-full"
+        />
+        <MessagePopup
+          class="invisible absolute -top-24 -left-14.5 group-hover:visible"
+        />
       </button>
     </div>
   </section>

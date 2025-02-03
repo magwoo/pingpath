@@ -1,12 +1,13 @@
 <script setup lang="ts">
 import Button from "../Button.vue";
 import HStack from "../HStack.vue";
-import Text from "../Text.vue";
 </script>
 
 <template>
   <HStack class="items-center justify-between">
-    <button class="text-accent text-xl font-medium hover:underline">
+    <button
+      class="text-accent cursor-pointer text-xl font-medium hover:underline"
+    >
       magwoo.ru
     </button>
     <span class="text-neutral/50 text-xl font-medium">17 мар. 15:34</span>
