@@ -9,11 +9,22 @@ const { convertToRatio } = useMap();
 const allPoints = [
   convertToRatio(-42.187956, 146.496657),
   convertToRatio(33.958073, -114.34227),
-  convertToRatio(-51.981497, -59.324327),
+  convertToRatio(43.981497, -59.324327),
   convertToRatio(59.793035, -43.941145),
 ];
-</script>
 
+interface Point {
+  x: number;
+  y: number;
+}
+
+function getPointStyles(point: Point) {
+  return {
+    left: `${point.x * 100}%`,
+    top: `${point.y * 100}%`,
+  };
+}
+</script>
 <template>
   <section class="flex w-full justify-center">
     <div class="relative w-max">
@@ -26,14 +37,10 @@ const allPoints = [
         :key="id"
         @click="console.log(123)"
         class="group absolute -mt-5 -ml-5 size-8 cursor-pointer rounded-full"
-        :style="[[`left: ${point.x! * 100}%`], [`top: ${point.y! * 100}%;`]]"
+        :style="getPointStyles(point)"
       >
-        <div
-          class="bg-accent relative -z-20 mx-auto flex size-2 justify-center rounded-full"
-        />
-        <MessagePopup
-          class="invisible absolute -top-24 -left-14.5 group-hover:visible"
-        />
+        <div class="bg-accent relative -z-10 mx-auto size-2 rounded-full" />
+        <MessagePopup />
       </button>
     </div>
   </section>

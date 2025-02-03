@@ -1,8 +1,8 @@
 <script setup lang="ts">
 const BUTTON_VARIANTS = {
-  accent: "bg-accent text-white cursor-pointer",
-  neutral: "bg-neutral/10 cursor-pointer text-neutral/75",
-  transparent: "bg-transparent cursor-pointer text-neutral/75",
+  accent: "bg-accent text-white",
+  neutral: "bg-neutral/10 text-neutral/75",
+  transparent: "bg-transparent text-neutral/75",
 };
 
 const BUTTON_SIZES = {
@@ -24,7 +24,7 @@ const { variant = "accent", size = "sm" } = defineProps<Props>();
 
 <template>
   <button
-    class="flex items-center gap-2 font-medium hover:brightness-95"
+    class="flex cursor-pointer items-center gap-2 font-medium hover:brightness-95"
     :class="[BUTTON_VARIANTS[variant], BUTTON_SIZES[size]]"
   >
     <slot name="before"></slot>
