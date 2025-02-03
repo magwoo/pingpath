@@ -1,19 +1,34 @@
 <script setup lang="ts">
+import Button from "../Button.vue";
 import HStack from "../HStack.vue";
-import ConnectionBar from "../svg/ConnectionBar.vue";
 import Text from "../Text.vue";
-import VStack from "../VStack.vue";
 </script>
 
 <template>
-  <HStack class="w-full items-center justify-between">
-    <HStack class="items-center gap-6">
-      <div class="bg-success size-3 rounded-full" />
-      <HStack class="items-center gap-4">
-        <img src="/flags/ru.png" class="max-h-5" />
-        <span class="text-accent/75 text-xl">Москва</span>
+  <HStack class="items-center justify-between">
+    <Text class="hover:underline" variant="accent" size="md">magwoo.ru</Text>
+    <Text variant="neutral" size="md">17 мар. 15:34</Text>
+    <HStack class="items-center gap-16">
+      <HStack class="items-center gap-8">
+        <HStack class="items-center gap-3">
+          <Text variant="neutral" size="sm">мин.</Text>
+          <span class="text-success text-xl">27ms</span>
+        </HStack>
+        <HStack class="items-center gap-3">
+          <Text variant="neutral" size="sm">ср.</Text>
+          <span class="text-warn text-xl">129ms</span>
+        </HStack>
+        <HStack class="items-center gap-3">
+          <Text variant="neutral" size="sm">макс.</Text>
+          <span class="text-error text-xl">490ms</span>
+        </HStack>
       </HStack>
+      <Button
+        variant="transparent"
+        size="lg"
+        class="hover:text-accent cursor-pointer"
+        >подробнее
+      </Button>
     </HStack>
-    <ConnectionBar />
   </HStack>
 </template>

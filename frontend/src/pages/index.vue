@@ -7,6 +7,7 @@ import VStack from "@/components/VStack.vue";
 import Map from "@/components/map/Map.vue";
 import Button from "@/components/Button.vue";
 import HistoryItem from "@/components/history/HistoryItem.vue";
+import LocationItem from "@/components/location/LocationItem.vue";
 </script>
 
 <template>
@@ -27,12 +28,23 @@ import HistoryItem from "@/components/history/HistoryItem.vue";
     <HStack class="flex gap-8">
       <Map class="max-w-[800px]" />
       <VStack class="w-full items-end gap-6">
-        <HistoryItem>Москва</HistoryItem>
-        <HistoryItem>Москва</HistoryItem>
-        <HistoryItem>Москва</HistoryItem>
-        <HistoryItem>Москва</HistoryItem>
-        <HistoryItem>Москва</HistoryItem>
+        <LocationItem>Москва</LocationItem>
+        <LocationItem>Москва</LocationItem>
+        <LocationItem>Москва</LocationItem>
+        <LocationItem>Москва</LocationItem>
+        <LocationItem>Москва</LocationItem>
       </VStack>
     </HStack>
+    <VStack class="gap-8">
+      <Text variant="accent" size="lg">История</Text>
+      <VStack class="w-full gap-8">
+        <HistoryItem />
+        <HistoryItem />
+        <HistoryItem />
+        <HistoryItem />
+        <HistoryItem />
+        <HistoryItem />
+      </VStack>
+    </VStack>
   </VStack>
 </template>
