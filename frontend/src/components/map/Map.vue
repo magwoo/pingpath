@@ -30,7 +30,7 @@ function getPointStyles(point: Point) {
     <div class="relative w-max">
       <img
         src="/map.png"
-        class="pointer-events-none relative -z-50 w-full max-w-[800px] select-none"
+        class="pointer-events-none relative -z-10 w-full max-w-[800px] select-none"
       />
       <button
         v-for="(point, id) in allPoints"
