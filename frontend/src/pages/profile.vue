@@ -16,7 +16,7 @@ interface ProfileInfo {
 const data = ref<ProfileInfo>();
 
 onMounted(async () => {
-  //await fetch("/api/auth/dev", { method: "POST" });
+  await fetch("/api/auth/dev", { method: "POST" });
   const response = await fetch("/api/profile");
 
   data.value = JSON.parse(await response.json());
@@ -36,10 +36,10 @@ const type = {
         <img v-if="data" :src="data.iconUrl" class="size-64" alt="" />
         <div v-else class="bg-neutral/25 size-64" />
         <VStack class="gap-6 text-right">
-          <Text size="md" variant="accent">Имя пользователя:</Text>
-          <Text size="md" variant="accent">Всего адресов:</Text>
-          <Text size="md" variant="accent">Профиль GitHub:</Text>
-          <Text size="md" variant="accent">Тариф:</Text>
+          <Text size="md" variant="neutral">Имя пользователя:</Text>
+          <Text size="md" variant="neutral">Всего адресов:</Text>
+          <Text size="md" variant="neutral">Профиль GitHub:</Text>
+          <Text size="md" variant="neutral">Тариф:</Text>
         </VStack>
         <VStack class="gap-6 text-left">
           <Text size="md" variant="neutral/75" v-if="data">{{
@@ -68,9 +68,9 @@ const type = {
         </VStack>
       </HStack>
       <HStack class="h-max items-start gap-4">
-        <Button variant="error" size="sm">Удалить аккаунт</Button>
+        <Button variant="error" size="smInline">Удалить аккаунт</Button>
         <div class="bg-neutral/25 my-auto h-4 w-0.5" />
-        <Button variant="error" size="sm">Выйти</Button>
+        <Button variant="error" size="smInline">Выйти</Button>
       </HStack>
     </HStack>
   </VStack>

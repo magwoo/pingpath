@@ -8,6 +8,7 @@ const BUTTON_VARIANTS = {
 
 const BUTTON_SIZES = {
   sm: "px-3 py-1",
+  smInline: "p-0",
   md: "px-8 py-2",
   lg: "px-8 py-2 text-xl",
 };
