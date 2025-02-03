@@ -1,6 +1,5 @@
 <script setup lang="ts">
 import HStack from "../HStack.vue";
-import ConnectionBar from "../svg/ConnectionBar.vue";
 import Text from "../Text.vue";
 import VStack from "../VStack.vue";
 </script>
@@ -14,6 +13,12 @@ import VStack from "../VStack.vue";
         <span class="text-accent/75 text-xl font-medium">Москва</span>
       </HStack>
     </HStack>
-    <ConnectionBar />
+    <HStack class="h-7 items-end gap-1">
+      <div class="bg-neutral/25 h-[10%] w-2" />
+      <div class="bg-neutral/25 h-[30%] w-2" />
+      <div class="bg-neutral/25 h-[60%] w-2" />
+      <div class="bg-neutral/25 h-[75%] w-2" />
+      <div class="bg-neutral/25 h-[90%] w-2" />
+    </HStack>
   </HStack>
 </template>
