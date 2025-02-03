@@ -96,7 +96,7 @@ Content-Type: application/json
 
 Return 401 Unauthorized code if request does not have session token cookie or invalid session token
 
-## `GET` `/history?page=0`
+## `GET` `/history?page=0` _in dev_
 
 Get user ping history by page number
 
