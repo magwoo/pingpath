@@ -10,6 +10,7 @@ const allPoints = [
   convertToRatio(-42.187956, 146.496657),
   convertToRatio(33.958073, -114.34227),
   convertToRatio(-51.981497, -59.324327),
+  convertToRatio(59.793035, -43.941145),
 ];
 </script>
 

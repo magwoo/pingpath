@@ -8,8 +8,10 @@ import Map from "@/components/map/Map.vue";
 import Button from "@/components/Button.vue";
 import HistoryItem from "@/components/history/HistoryItem.vue";
 import LocationItem from "@/components/location/LocationItem.vue";
-</script>
+import { ref } from "vue";
 
+const domainInput = ref<string>("");
+</script>
 <template>
   <Nav></Nav>
   <VStack class="mt-32 gap-32">
@@ -20,9 +22,11 @@ import LocationItem from "@/components/location/LocationItem.vue";
     <VStack class="gap-4">
       <Text variant="accent" size="md">Домен или ссылка</Text>
       <HStack class="gap-6">
-        <Input placeholder="https://example.com" />
+        <Input placeholder="https://example.com" v-model="domainInput" />
         <Button variant="accent" size="md">Измерить</Button>
-        <Button variant="transparent" size="md">Очистить</Button>
+        <Button @click="domainInput = ''" variant="transparent" size="md"
+          >Очистить</Button
+        >
       </HStack>
     </VStack>
     <HStack class="flex gap-8">
