@@ -45,11 +45,11 @@ const type = {
           <Text size="md" variant="neutral/75" v-if="data">{{
             data.username
           }}</Text>
-          <div v-else class="bg-neutral/10 h-7 w-25" />
+          <div v-else class="bg-neutral/10 h-7 w-45" />
           <Text size="md" variant="neutral/75" v-if="data">{{
             data.addressAmount
           }}</Text>
-          <div v-else class="bg-neutral/10 h-7 w-25" />
+          <div v-else class="bg-neutral/10 h-7 w-40" />
           <Text
             size="md"
             variant="neutral/75"
@@ -60,16 +60,16 @@ const type = {
               `github/${data.username}`
             }}</a></Text
           >
-          <div v-else class="bg-neutral/10 h-7 w-25" />
+          <div v-else class="bg-neutral/10 h-7 w-35" />
           <Text size="md" variant="neutral/75" v-if="data">{{
             type[data.type]
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-25" />
         </VStack>
       </HStack>
-      <HStack class="h-max items-start gap-4">
+      <HStack class="h-max items-center gap-4">
         <Button variant="error" size="smInline">Удалить аккаунт</Button>
-        <div class="bg-neutral/25 my-auto h-4 w-0.5" />
+        <div class="bg-neutral/25 h-4 w-0.5" />
         <Button variant="error" size="smInline">Выйти</Button>
       </HStack>
     </HStack>
