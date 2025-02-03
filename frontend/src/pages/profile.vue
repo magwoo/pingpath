@@ -3,6 +3,7 @@ import Nav from "@/components/Nav.vue";
 import HStack from "@/components/HStack.vue";
 import VStack from "@/components/VStack.vue";
 import Text from "@/components/Text.vue";
+import Button from "@/components/Button.vue";
 import { onMounted, ref } from "vue";
 
 interface ProfileInfo {
@@ -31,36 +32,51 @@ const type = {
   <Nav></Nav>
   <VStack class="gap-8">
     <Text size="lg" variant="neutral/50">Профиль</Text>
-    <HStack class="gap-12">
-      <img v-if="data" :src="data.iconUrl" class="size-64" alt="" />
-      <div v-else class="bg-neutral size-64"></div>
-      <VStack class="gap-6 text-right">
-        <Text size="md" variant="accent">Имя пользователя:</Text>
-        <Text size="md" variant="accent">Всего адресов:</Text>
-        <Text size="md" variant="accent">Профиль GitHub:</Text>
-        <Text size="md" variant="accent">Тариф:</Text>
-      </VStack>
-      <VStack class="gap-6 text-left">
-        <Text size="md" variant="neutral/75" v-if="data">{{
-          data.username
-        }}</Text>
-        <Text size="md" variant="neutral/75" v-if="data">{{
-          data.addressAmount
-        }}</Text>
-        <Text
-          size="md"
-          variant="neutral/75"
-          class="hover:underline"
-          v-if="data"
+    <HStack class="justify-between">
+      <HStack class="gap-12">
+        <img v-if="data" :src="data.iconUrl" class="size-64" alt="" />
+        <div v-else class="bg-neutral size-64"></div>
+        <VStack class="gap-6 text-right">
+          <Text size="md" variant="accent">Имя пользователя:</Text>
+          <Text size="md" variant="accent">Всего адресов:</Text>
+          <Text size="md" variant="accent">Профиль GitHub:</Text>
+          <Text size="md" variant="accent">Тариф:</Text>
+        </VStack>
+        <VStack class="gap-6 text-left">
+          <Text size="md" variant="neutral/75" v-if="data">{{
+            data.username
+          }}</Text>
+          <div v-else class="bg-neutral h-7 w-12"></div>
+          <Text size="md" variant="neutral/75" v-if="data">{{
+            data.addressAmount
+          }}</Text>
+          <div v-else class="bg-neutral h-7 w-12"></div>
+          <Text
+            size="md"
+            variant="neutral/75"
+            class="hover:underline"
+            v-if="data"
+          >
+            <a :href="`https://github/${data.username} `">{{
+              `github/${data.username} `
+            }}</a></Text
+          >
+          <div v-else class="bg-neutral h-7 w-12"></div>
+          <Text size="md" variant="neutral/75" v-if="data">{{
+            type[data.type]
+          }}</Text>
+          <div v-else class="bg-neutral h-7 w-12"></div>
+        </VStack>
+      </HStack>
+      <HStack class="h-max items-start gap-4">
+        <Button variant="error" size="sm" class="hover:cursor-pointer"
+          >Удалить аккаунт</Button
         >
-          <a :href="`https://github/${data.username} `">{{
-            `github/${data.username} `
-          }}</a></Text
+        <div class="bg-neutral/25 h-8 w-0.5"></div>
+        <Button variant="transparent" size="sm" class="hover:cursor-pointer"
+          >Выйти</Button
         >
-        <Text size="md" variant="neutral/75" v-if="data">{{
-          type[data.type]
-        }}</Text>
-      </VStack>
+      </HStack>
     </HStack>
   </VStack>
 </template>

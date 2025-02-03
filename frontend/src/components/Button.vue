@@ -3,6 +3,7 @@ const BUTTON_VARIANTS = {
   accent: "bg-accent text-white cursor-pointer",
   neutral: "bg-neutral/10 cursor-pointer text-neutral/75",
   transparent: "bg-transparent text-neutral/75",
+  error: "text-error bg-transparent",
 };
 
 const BUTTON_SIZES = {
