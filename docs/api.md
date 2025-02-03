@@ -25,7 +25,7 @@ POST /auth/dev HTTP/1.1
 
 ```text
 HTTP/1.1 200 OK
-Set-Cookie: [some session token]
+Set-Cookie: token=[some session token]
 ```
 
 # Profile
@@ -51,7 +51,7 @@ Get general profile data
 
 ```text
 GET /profile HTTP/1.1
-Cookie: [some active session token]
+Cookie: token=[some active session token]
 ...
 ```
 
@@ -75,7 +75,7 @@ Content-Type: application/json
 
 ```text
 GET /profile HTTP/1.1
-Cookie: [some active session token]
+Cookie: token=[some active session token]
 ...
 ```
 
@@ -86,6 +86,48 @@ HTTP/1.1 200 OK
 Content-Type: application/json
 ...
 {
-  "username": "boris2001",  // string
+  "username": "boris2001", // string
 }
 ```
+
+# History
+
+## Features
+
+Return 401 Unauthorized code if request does not have session token cookie or invalid session token
+
+## `GET` `/history?page=0`
+
+Get user ping history by page number
+
+> One page contains 0-24 items, return empty list if page empty
+
+### request
+
+```text
+GET /history?page=0 HTTP/1.1
+Cookie: token=[some active session token]
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+[
+  {
+    "id": 1                   // unsigned number
+    "address": "https://...", // string
+    "timestamp": "12345789",  // unsigned number
+    "ping": {
+      "min": 29,              // unsigned number
+      "avg": 85,              // unsigned number
+      "max": 451              // unsigned number
+    }
+  },
+  ...
+]
+```
+
