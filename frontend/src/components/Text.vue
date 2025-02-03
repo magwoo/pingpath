@@ -9,6 +9,8 @@ const TEXT_SIZES = {
 const TEXT_VARIANTS = {
   accent: "text-accent",
   neutral: "text-neutral",
+  "neutral/75": "text-neutral/75",
+  "neutral/50": "text-neutral/50",
 };
 
 interface Props {
