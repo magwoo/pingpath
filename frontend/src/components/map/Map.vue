@@ -30,7 +30,7 @@ function getPointStyles(point: Point) {
     <div class="relative w-max">
       <img
         src="/map.png"
-        class="pointer-events-none relative -z-10 w-full max-w-[800px] select-none"
+        class="pointer-events-none relative w-full max-w-[800px] select-none"
       />
       <button
         v-for="(point, id) in allPoints"
@@ -39,7 +39,7 @@ function getPointStyles(point: Point) {
         class="group absolute -mt-5 -ml-5 size-8 cursor-pointer rounded-full"
         :style="getPointStyles(point)"
       >
-        <div class="bg-accent relative -z-10 mx-auto size-2 rounded-full" />
+        <div class="bg-accent relative mx-auto size-2 rounded-full" />
         <MessagePopup />
       </button>
     </div>
