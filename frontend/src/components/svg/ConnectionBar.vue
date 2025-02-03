@@ -1,0 +1,43 @@
+<template>
+  <svg
+    width="56"
+    height="26"
+    viewBox="0 0 56 26"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <rect y="7" width="8" height="19" fill="#78716C" fill-opacity="0.25" />
+    <rect
+      x="12"
+      y="15"
+      width="8"
+      height="11"
+      fill="#78716C"
+      fill-opacity="0.25"
+    />
+    <rect
+      x="24"
+      y="4"
+      width="8"
+      height="22"
+      fill="#78716C"
+      fill-opacity="0.25"
+    />
+    <rect
+      x="36"
+      y="12"
+      width="8"
+      height="14"
+      fill="#78716C"
+      fill-opacity="0.25"
+    />
+    <rect
+      x="48"
+      y="20"
+      width="8"
+      height="6"
+      fill="#78716C"
+      fill-opacity="0.25"
+    />
+  </svg>
+</template>

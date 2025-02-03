@@ -4,7 +4,7 @@ import Text from "../Text.vue";
 </script>
 
 <template>
-  <div class="bg-accent flex w-max flex-col gap-1 p-2 text-left">
+  <div class="bg-accent flex h-max w-max flex-col gap-1 p-2 text-left">
     <Text class="text-white" size="md"> Нидерланды, <br />Амстердам </Text>
     <span class="text-success text-xs">задержка: 12мс</span>
     <div

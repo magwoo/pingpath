@@ -6,7 +6,12 @@ import MessagePopup from "./MessagePopup.vue";
 
 const { convertToRatio } = useMap();
 
-const allPoints = [convertToRatio(-42.187956, 146.496657)];
+const allPoints = [
+  convertToRatio(-42.187956, 146.496657),
+  convertToRatio(33.958073, -114.34227),
+  convertToRatio(35.338997, 25.137026),
+  convertToRatio(47.496952, 19.063225),
+];
 </script>
 
 <template>
