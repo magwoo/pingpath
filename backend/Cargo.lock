@@ -59,9 +59,9 @@ dependencies = [
 
 [[package]]
 name = "axum-cookie"
-version = "0.1.1"
+version = "0.2.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "95c4febbfae491fa744b849c66530d4eb71b9cce1ee39ea080a44065aa3d0769"
+checksum = "ac6803bd33dc1065e5f73d93c6f752fd019a7c0fe59b9e49e107e29c0a2be0c8"
 dependencies = [
  "axum-core",
  "cookie-rs",

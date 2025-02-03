@@ -15,7 +15,7 @@ async fn dev_auth(cookie: CookieManager) -> Result<impl IntoResponse, StatusCode
         return Err(StatusCode::FORBIDDEN);
     }
 
-    cookie.add(("token", DEV_TOKEN).into());
+    cookie.set(("token", DEV_TOKEN));
 
     Ok(StatusCode::OK)
 }
