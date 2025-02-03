@@ -1,8 +1,8 @@
 const mapBounds = {
   minLon: -169,
-  maxLon: 192,
+  maxLon: 190,
   minLat: -60,
-  maxLat: 84.5,
+  maxLat: 85.5,
 };
 
 function latToMercator(lat: number) {
