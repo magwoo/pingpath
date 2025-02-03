@@ -2,6 +2,7 @@ use axum::http::{Request, StatusCode};
 use axum::response::IntoResponse;
 use axum::routing::post;
 use axum::Router;
+use axum_cookie::cookie::CookieBuilder;
 use axum_cookie::CookieManager;
 
 pub const DEV_TOKEN: &str = "11dc7bac0042b71d690a29b2c2787ccb89f9014471902b5667daff7c9b407c9c";
@@ -15,7 +16,7 @@ async fn dev_auth(cookie: CookieManager) -> Result<impl IntoResponse, StatusCode
         return Err(StatusCode::FORBIDDEN);
     }
 
-    cookie.set(("token", DEV_TOKEN));
+    cookie.set(CookieBuilder::new("token", DEV_TOKEN).path("/").build());
 
     Ok(StatusCode::OK)
 }
