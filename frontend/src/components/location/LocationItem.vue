@@ -11,7 +11,7 @@ import VStack from "../VStack.vue";
       <div class="bg-success size-3 rounded-full" />
       <HStack class="items-center gap-4">
         <img src="/flags/ru.png" class="max-h-5" />
-        <span class="text-accent/75 text-xl">Москва</span>
+        <span class="text-accent/75 text-xl font-medium">Москва</span>
       </HStack>
     </HStack>
     <ConnectionBar />

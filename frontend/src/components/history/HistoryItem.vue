@@ -6,27 +6,29 @@ import Text from "../Text.vue";
 
 <template>
   <HStack class="items-center justify-between">
-    <Text class="hover:underline" variant="accent" size="md">magwoo.ru</Text>
-    <Text variant="neutral" size="md">17 мар. 15:34</Text>
+    <button class="text-accent text-xl font-medium hover:underline">
+      magwoo.ru
+    </button>
+    <span class="text-neutral/50 text-xl font-medium">17 мар. 15:34</span>
     <HStack class="items-center gap-16">
       <HStack class="items-center gap-8">
         <HStack class="items-center gap-3">
-          <Text variant="neutral" size="sm">мин.</Text>
-          <span class="text-success text-xl">27ms</span>
+          <span class="text-neutral/50 font-medium">мин.</span>
+          <span class="text-success text-xl font-medium">27ms</span>
         </HStack>
         <HStack class="items-center gap-3">
-          <Text variant="neutral" size="sm">ср.</Text>
-          <span class="text-warn text-xl">129ms</span>
+          <span class="text-neutral/50 font-medium">ср.</span>
+          <span class="text-warn text-xl font-medium">129ms</span>
         </HStack>
         <HStack class="items-center gap-3">
-          <Text variant="neutral" size="sm">макс.</Text>
-          <span class="text-error text-xl">490ms</span>
+          <span class="text-neutral/50 font-medium">макс.</span>
+          <span class="text-error text-xl font-medium">490ms</span>
         </HStack>
       </HStack>
       <Button
         variant="transparent"
         size="lg"
-        class="hover:text-accent cursor-pointer"
+        class="hover:text-accent text-neutral/50 cursor-pointer"
         >подробнее
       </Button>
     </HStack>

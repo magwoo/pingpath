@@ -17,7 +17,7 @@ window.onhashchange = () => {
 <template>
   <RouterLink
     :to="href"
-    class="flex items-center gap-2 text-xl"
+    class="flex items-center gap-2 text-xl font-medium"
     :class="isActive ? 'text-accent' : 'text-neutral/75 hover:text-neutral'"
   >
     <slot name="before" :state="isActive"></slot>
