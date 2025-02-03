@@ -53,7 +53,7 @@ const type = {
           class="hover:underline"
           v-if="data"
         >
-          <a :href="`github/${data.username} `">{{
+          <a :href="`https://github/${data.username} `">{{
             `github/${data.username} `
           }}</a></Text
         >
