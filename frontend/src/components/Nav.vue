@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import Link from "./Link.vue";
 import Logo from "./svg/Logo.vue";
 import Button from "./Button.vue";

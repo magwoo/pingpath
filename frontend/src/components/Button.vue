@@ -26,7 +26,7 @@ const { variant = "accent", size = "sm" } = defineProps<Props>();
 
 <template>
   <button
-    class="flex items-center gap-2 hover:brightness-95"
+    class="flex cursor-pointer items-center gap-2 font-medium hover:brightness-95"
     :class="[BUTTON_VARIANTS[variant], BUTTON_SIZES[size]]"
   >
     <slot name="before"></slot>
