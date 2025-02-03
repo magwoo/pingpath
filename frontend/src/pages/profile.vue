@@ -16,11 +16,10 @@ interface ProfileInfo {
 const data = ref<ProfileInfo>();
 
 onMounted(async () => {
-  await fetch("/api/auth/dev", { method: "POST" });
+  //await fetch("/api/auth/dev", { method: "POST" });
   const response = await fetch("/api/profile");
 
   data.value = JSON.parse(await response.json());
-  console.log(data.value);
 });
 
 const type = {
@@ -35,7 +34,7 @@ const type = {
     <HStack class="justify-between">
       <HStack class="gap-12">
         <img v-if="data" :src="data.iconUrl" class="size-64" alt="" />
-        <div v-else class="bg-neutral size-64"></div>
+        <div v-else class="bg-neutral/25 size-64" />
         <VStack class="gap-6 text-right">
           <Text size="md" variant="accent">Имя пользователя:</Text>
           <Text size="md" variant="accent">Всего адресов:</Text>
@@ -46,36 +45,32 @@ const type = {
           <Text size="md" variant="neutral/75" v-if="data">{{
             data.username
           }}</Text>
-          <div v-else class="bg-neutral h-7 w-12"></div>
+          <div v-else class="bg-neutral/10 h-7 w-25" />
           <Text size="md" variant="neutral/75" v-if="data">{{
             data.addressAmount
           }}</Text>
-          <div v-else class="bg-neutral h-7 w-12"></div>
+          <div v-else class="bg-neutral/10 h-7 w-25" />
           <Text
             size="md"
             variant="neutral/75"
             class="hover:underline"
             v-if="data"
           >
-            <a :href="`https://github/${data.username} `">{{
-              `github/${data.username} `
+            <a :href="`https://github/${data.username}`">{{
+              `github/${data.username}`
             }}</a></Text
           >
-          <div v-else class="bg-neutral h-7 w-12"></div>
+          <div v-else class="bg-neutral/10 h-7 w-25" />
           <Text size="md" variant="neutral/75" v-if="data">{{
             type[data.type]
           }}</Text>
-          <div v-else class="bg-neutral h-7 w-12"></div>
+          <div v-else class="bg-neutral/10 h-7 w-25" />
         </VStack>
       </HStack>
       <HStack class="h-max items-start gap-4">
-        <Button variant="error" size="sm" class="hover:cursor-pointer"
-          >Удалить аккаунт</Button
-        >
-        <div class="bg-neutral/25 h-8 w-0.5"></div>
-        <Button variant="transparent" size="sm" class="hover:cursor-pointer"
-          >Выйти</Button
-        >
+        <Button variant="error" size="sm">Удалить аккаунт</Button>
+        <div class="bg-neutral/25 my-auto h-4 w-0.5" />
+        <Button variant="error" size="sm">Выйти</Button>
       </HStack>
     </HStack>
   </VStack>

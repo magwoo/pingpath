@@ -2,8 +2,8 @@
 const BUTTON_VARIANTS = {
   accent: "bg-accent text-white cursor-pointer",
   neutral: "bg-neutral/10 cursor-pointer text-neutral/75",
-  transparent: "bg-transparent text-neutral/75",
-  error: "text-error bg-transparent",
+  transparent: "bg-transparent  cursor-pointer text-neutral/75",
+  error: "text-neutral/50 cursor-pointer hover:text-error",
 };
 
 const BUTTON_SIZES = {
