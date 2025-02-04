@@ -1,10 +1,19 @@
 @import "tailwindcss";
 
-@layer base {
-}
+@layer base {}
 
 @theme {
   --font-roboto: "Roboto Mono", serif;
+
+  --font-thin: 50;
+  --font-extralight: 150;
+  --font-light: 250;
+  --font-weight-normal: 350;
+  --font-weight-medium: 450;
+  --font-weight-semibold: 550;
+  --font-weight-bold: 650;
+  --font-weight-extrabold: 750;
+  --font-weight-black: 850;
 
   --container-content: 1248px;
 
