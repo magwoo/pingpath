@@ -1,7 +1,5 @@
 <script setup lang="ts">
 import { useMap } from "@/composables/useMap";
-import type { RefSymbol } from "@vue/reactivity";
-import { ref, onMounted, useTemplateRef, watch } from "vue";
 import MessagePopup from "./MessagePopup.vue";
 
 const { convertToRatio } = useMap();
@@ -35,9 +33,8 @@ function getPointStyles(point: Point) {
       <button
         v-for="(point, id) in allPoints"
         :key="id"
-        @click="console.log(123)"
         class="group absolute -mt-5 -ml-5 size-8 cursor-pointer rounded-full"
-        :style="getPointStyles(point)"
+        :style="getPointStyles(point! as Point)"
       >
         <div class="bg-accent relative mx-auto size-2 rounded-full" />
         <MessagePopup />
