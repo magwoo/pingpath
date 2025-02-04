@@ -24,7 +24,11 @@ const domainInput = ref<string>("");
       <HStack class="gap-6">
         <Input placeholder="https://example.com" v-model="domainInput" />
         <Button variant="accent" size="md">Измерить</Button>
-        <Button @click="domainInput = ''" variant="transparent" size="md"
+        <Button
+          @click="domainInput = ''"
+          variant="transparent"
+          size="sm-inline"
+          class="ml-2"
           >Очистить</Button
         >
       </HStack>

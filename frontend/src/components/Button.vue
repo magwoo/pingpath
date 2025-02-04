@@ -2,7 +2,8 @@
 const BUTTON_VARIANTS = {
   accent: "bg-accent text-white cursor-pointer",
   neutral: "bg-neutral/10 cursor-pointer text-neutral/75",
-  transparent: "bg-transparent  cursor-pointer text-neutral/75",
+  transparent:
+    "bg-transparent cursor-pointer text-neutral/75 hover:text-neutral",
   error: "text-neutral/50 cursor-pointer hover:text-error",
 };
 
