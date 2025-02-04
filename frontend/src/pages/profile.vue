@@ -30,10 +30,15 @@ const type = {
 <template>
   <Nav></Nav>
   <VStack class="gap-8">
-    <Text size="lg" variant="neutral/50">Профиль</Text>
+    <Text size="lg" variant="neutral" class="opacity-50">Профиль</Text>
     <HStack class="justify-between">
       <HStack class="gap-12">
-        <img v-if="data" :src="data.iconUrl" class="size-64" alt="" />
+        <img
+          v-if="data"
+          :src="data.iconUrl"
+          class="size-64"
+          alt="profile-preview"
+        />
         <div v-else class="bg-neutral/25 size-64" />
         <VStack class="gap-6 text-right">
           <Text size="md" variant="neutral">Имя пользователя:</Text>
@@ -42,26 +47,26 @@ const type = {
           <Text size="md" variant="neutral">Тариф:</Text>
         </VStack>
         <VStack class="gap-6 text-left">
-          <Text size="md" variant="neutral/75" v-if="data">{{
+          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
             data.username
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-45" />
-          <Text size="md" variant="neutral/75" v-if="data">{{
+          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
             data.addressAmount
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-40" />
           <Text
             size="md"
-            variant="neutral/75"
-            class="hover:underline"
+            variant="neutral"
+            class="hover:underline opacity-75"
             v-if="data"
           >
-            <a :href="`https://github/${data.username}`">{{
-              `github/${data.username}`
+            <a :href="`https://github.com/${data.username}`">{{
+              `github.com/${data.username}`
             }}</a></Text
           >
           <div v-else class="bg-neutral/10 h-7 w-35" />
-          <Text size="md" variant="neutral/75" v-if="data">{{
+          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
             type[data.type]
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-25" />

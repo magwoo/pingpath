@@ -20,7 +20,7 @@ const domainInput = ref<string>("");
       <Text class="text-right" variant="neutral" size="md">со всего мира</Text>
     </VStack>
     <VStack class="gap-4">
-      <Text variant="accent" size="md">Домен или ссылка</Text>
+      <Text variant="accent" size="md">Домен или айпи</Text>
       <HStack class="gap-6">
         <Input placeholder="https://example.com" v-model="domainInput" />
         <Button variant="accent" size="md">Измерить</Button>

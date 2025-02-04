@@ -9,8 +9,6 @@ const TEXT_SIZES = {
 const TEXT_VARIANTS = {
   accent: "text-accent",
   neutral: "text-neutral",
-  "neutral/75": "text-neutral/75",
-  "neutral/50": "text-neutral/50",
 };
 
 interface Props {
@@ -27,7 +25,7 @@ const { size = "md", variant = "accent", pattern } = defineProps<Props>();
     <slot></slot>
     <div
       v-if="pattern"
-      class="text- pointer-events-none absolute top-0 bottom-0 -left-4"
+      class="pointer-events-none absolute top-0 bottom-0 -left-4 select-none"
     >
       <img src="/patterns/text-pattern.svg" />
     </div>
