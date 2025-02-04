@@ -68,9 +68,9 @@ const type = {
         </VStack>
       </HStack>
       <HStack class="h-max items-center gap-4">
-        <Button variant="error" size="smInline">Удалить аккаунт</Button>
+        <Button variant="error" size="sm-inline">Удалить аккаунт</Button>
         <div class="bg-neutral/25 h-4 w-0.5" />
-        <Button variant="error" size="smInline">Выйти</Button>
+        <Button variant="error" size="sm-inline">Выйти</Button>
       </HStack>
     </HStack>
   </VStack>
