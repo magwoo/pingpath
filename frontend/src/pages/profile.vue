@@ -41,22 +41,22 @@ const type = {
         />
         <div v-else class="bg-neutral/25 size-64" />
         <VStack class="gap-6 text-right">
-          <Text size="md" variant="neutral">Имя пользователя:</Text>
-          <Text size="md" variant="neutral">Всего адресов:</Text>
-          <Text size="md" variant="neutral">Профиль GitHub:</Text>
-          <Text size="md" variant="neutral">Тариф:</Text>
+          <Text size="sm" variant="neutral">Имя пользователя:</Text>
+          <Text size="sm" variant="neutral">Всего адресов:</Text>
+          <Text size="sm" variant="neutral">Профиль GitHub:</Text>
+          <Text size="sm" variant="neutral">Тариф:</Text>
         </VStack>
         <VStack class="gap-6 text-left">
-          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
+          <Text size="sm" variant="neutral" class="opacity-75" v-if="data">{{
             data.username
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-45" />
-          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
+          <Text size="sm" variant="neutral" class="opacity-75" v-if="data">{{
             data.addressAmount
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-40" />
           <Text
-            size="md"
+            size="sm"
             variant="neutral"
             class="hover:underline opacity-75"
             v-if="data"
@@ -66,7 +66,7 @@ const type = {
             }}</a></Text
           >
           <div v-else class="bg-neutral/10 h-7 w-35" />
-          <Text size="md" variant="neutral" class="opacity-75" v-if="data">{{
+          <Text size="sm" variant="neutral" class="opacity-75" v-if="data">{{
             type[data.type]
           }}</Text>
           <div v-else class="bg-neutral/10 h-7 w-25" />
