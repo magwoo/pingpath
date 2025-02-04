@@ -10,18 +10,18 @@ import HStack from "../HStack.vue";
     >
       magwoo.ru
     </button>
-    <span class="text-neutral/50 text-xl font-medium">17 мар. 15:34</span>
+    <span class="text-neutral/50 font-medium">17 мар. 15:34</span>
     <HStack class="items-center gap-16">
       <HStack class="items-center gap-8">
-        <HStack class="items-center gap-3">
+        <HStack class="items-center gap-2">
           <span class="text-neutral/50 font-medium">мин.</span>
           <span class="text-success text-xl font-medium">27ms</span>
         </HStack>
-        <HStack class="items-center gap-3">
+        <HStack class="items-center gap-2">
           <span class="text-neutral/50 font-medium">ср.</span>
           <span class="text-warn text-xl font-medium">129ms</span>
         </HStack>
-        <HStack class="items-center gap-3">
+        <HStack class="items-center gap-2">
           <span class="text-neutral/50 font-medium">макс.</span>
           <span class="text-error text-xl font-medium">490ms</span>
         </HStack>
