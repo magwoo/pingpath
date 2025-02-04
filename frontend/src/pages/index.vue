@@ -14,7 +14,7 @@ const domainInput = ref<string>("");
 </script>
 <template>
   <Nav></Nav>
-  <VStack class="mt-32 gap-32">
+  <VStack class="mt-32 gap-32 mb-64">
     <VStack class="w-max">
       <Text variant="accent" size="2xl" pattern>Измерение пинга</Text>
       <Text class="text-right" variant="neutral" size="md">со всего мира</Text>
@@ -44,7 +44,7 @@ const domainInput = ref<string>("");
       </VStack>
     </HStack>
     <VStack class="gap-8">
-      <Text variant="accent" size="lg">История</Text>
+      <Text variant="neutral" size="lg" class="opacity-50">История</Text>
       <VStack class="w-full gap-8">
         <HistoryItem />
         <HistoryItem />

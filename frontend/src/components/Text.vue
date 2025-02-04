@@ -2,7 +2,7 @@
 const TEXT_SIZES = {
   sm: "text-md font-medium",
   md: "text-xl font-medium",
-  lg: "text-3xl font-medium",
+  lg: "text-3xl font-semibold",
   "2xl": "text-6xl font-bold",
 };
 
