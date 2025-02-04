@@ -5,20 +5,25 @@ import HStack from "../HStack.vue";
 
 <template>
   <HStack class="items-center justify-between">
-    <Button variant="transparent" size="sm-inline">magwoo.ru</Button>
+    <Button
+      variant="transparent"
+      size="sm-inline"
+      class="text-accent/75! hover:text-accent!"
+      >magwoo.ru</Button
+    >
     <span class="text-neutral/50 font-medium">17 мар. 15:34</span>
     <HStack class="items-center gap-16">
       <HStack class="items-center gap-8">
         <HStack class="items-center gap-2">
-          <span class="text-neutral/50 text-sm font-medium">мин.</span>
+          <span class="text-neutral/50 text-xs font-medium">мин.</span>
           <span class="text-success font-medium">27ms</span>
         </HStack>
         <HStack class="items-center gap-2">
-          <span class="text-neutral/50 text-sm font-medium">ср.</span>
+          <span class="text-neutral/50 text-xs font-medium">ср.</span>
           <span class="text-warn font-medium">129ms</span>
         </HStack>
         <HStack class="items-center gap-2">
-          <span class="text-neutral/50 text-sm font-medium">макс.</span>
+          <span class="text-neutral/50 text-xs font-medium">макс.</span>
           <span class="text-error font-medium">490ms</span>
         </HStack>
       </HStack>
