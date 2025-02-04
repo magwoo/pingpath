@@ -11,6 +11,7 @@ const BUTTON_SIZES = {
   md: "px-8 py-2",
   lg: "px-8 py-2 text-xl",
   "sm-inline": "p-0",
+  "lg-inline": "text-xl p-0",
 };
 
 type ButtonVariant = keyof typeof BUTTON_VARIANTS;

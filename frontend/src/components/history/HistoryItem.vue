@@ -5,11 +5,12 @@ import HStack from "../HStack.vue";
 
 <template>
   <HStack class="items-center justify-between">
-    <button
-      class="text-accent cursor-pointer text-xl font-medium hover:underline"
+    <Button
+      variant="transparent"
+      size="lg-inline"
+      class="text-accent! hover:underline"
+      >magwoo.ru</Button
     >
-      magwoo.ru
-    </button>
     <span class="text-neutral/50 font-medium">17 мар. 15:34</span>
     <HStack class="items-center gap-16">
       <HStack class="items-center gap-8">
