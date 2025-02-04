@@ -29,8 +29,8 @@ import HStack from "../HStack.vue";
       </HStack>
       <Button
         variant="transparent"
-        size="lg"
-        class="hover:text-accent text-neutral/50 cursor-pointer"
+        size="lg-inline"
+        class="hover:text-accent! text-neutral/50! cursor-pointer"
         >подробнее
       </Button>
     </HStack>
