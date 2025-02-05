@@ -9,11 +9,12 @@ mod profile;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
-    let without_auth = Router::new().nest("/auth", auth::get_nest());
+    let without_auth = Router::new()
+        .nest("/auth", auth::get_nest())
+        .nest("/locations", locations::get_nest());
 
     let with_auth = Router::new()
         .nest("/profile", profile::get_nest())
-        .nest("/locations", locations::get_nest())
         .layer(map_request(auth::auth_middleware));
 
     let router = Router::new()
