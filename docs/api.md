@@ -131,3 +131,52 @@ Content-Type: application/json
 ]
 ```
 
+# Locations
+
+## `GET` `/locations`
+
+Get our locations
+
+### request
+
+```text
+GET /locations HTTP/1.1
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "1.1.1.1": {
+    "city": {                      // object | null
+      "geoname_id": 1              // number
+      "names": {                   // object | null
+        "en": "City name"          // string
+        ...
+      }
+    },
+    "country": {                   // object | null
+      "geoname_id": 1              // number
+      "is_in_european_union": true // boolean
+      "iso_code": "NL"             // string
+      "names": {                   // object | null
+        "en": "Country name"       // string
+        ...
+      }
+    },
+    "location": {                  // object | null
+      "accuracy_radius": 20        // number
+      "latitude": 52.3759          // number
+      "longitude": 4.8975          // number
+      "metro_code": 1              // number | null
+      "time_zone": "TZ/name"       // string
+    }
+  },
+  ...
+}
+```
+
