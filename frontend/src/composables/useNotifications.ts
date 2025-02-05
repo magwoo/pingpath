@@ -10,7 +10,7 @@ const createContainer = () => {
 
   notificationsContainer.id = "notifications-container";
   notificationsContainer.className =
-    "fixed right-6 bottom-6 w-[320px] flex flex-col gap-6 justify-end items-end";
+    "fixed right-6 bottom-6 w-[320px] flex flex-col gap-6 justify-end items-end pointer-events-none";
 
   document.body.appendChild(notificationsContainer);
 
