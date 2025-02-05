@@ -1,4 +1,5 @@
 import Notification from "@/components/notifications/Notification.vue";
+
 import { createApp, h, Transition } from "vue";
 
 const createContainer = () => {
@@ -10,7 +11,7 @@ const createContainer = () => {
 
   notificationsContainer.id = "notifications-container";
   notificationsContainer.className =
-    "fixed right-6 bottom-6 w-[320px] flex flex-col gap-6 justify-end items-end pointer-events-none";
+    "fixed right-6 bottom-6 w-[320px] flex flex-col gap-6 items-end pointer-events-none";
 
   document.body.appendChild(notificationsContainer);
 
