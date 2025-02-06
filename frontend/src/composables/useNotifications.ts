@@ -3,11 +3,11 @@ import Notification from "@/components/notifications/Notification.vue";
 import { createApp, h, Transition } from "vue";
 
 const createContainer = () => {
-  let container = document.getElementById("notifications-container");
+  const container = document.getElementById("notifications-container");
 
   if (container) return container;
 
-  let notificationsContainer = document.createElement("div");
+  const notificationsContainer = document.createElement("div");
 
   notificationsContainer.id = "notifications-container";
   notificationsContainer.className =
@@ -24,7 +24,6 @@ const showNotification = (
   duration = 3000
 ) => {
   const container = createContainer();
-
   const notificationContainer = document.createElement("div");
   container.appendChild(notificationContainer);
 
@@ -36,10 +35,6 @@ const showNotification = (
           enterFromClass: "opacity-0 translate-x-full",
           leaveToClass: "opacity-0 translate-x-full",
           appear: true,
-          onAfterLeave: () => {
-            app.unmount();
-            document.body.removeChild(container);
-          },
         },
         [h(Notification, { variant: variant }, () => message)]
       );
