@@ -22,3 +22,13 @@ services:
       - ./backend:/app
     environment:
       PACKAGE_NAME: client-api
+
+  database:
+    container_name: pingpath-database-dev
+    image: rqlite/rqlite:8.36.10
+    ports:
+      - 4001:4001
+    volumes:
+      - ./data/database:/var/database
+    environment:
+      DATA_DIR: /var/data
