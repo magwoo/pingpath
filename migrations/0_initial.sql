@@ -14,3 +14,10 @@ CREATE TABLE IF NOT EXISTS `locations` (
     `longitude` INTEGER NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS `user_addrs` (
+    `id` INTEGER PRIMARY KEY,
+    `name` TEXT,
+    `addr` TEXT NOT NULL,
+    `create_date` DATETIME NOT NULL
+);
+
