@@ -1,4 +1,4 @@
 pub struct UserGithub {
     token: String,
-    imgUrl: String,
+    img_url: String,
 }
