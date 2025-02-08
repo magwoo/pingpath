@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
     `country` TEXT NOT NULL CHECK(length(country) == 2),
     `city` TEXT,
     `latitude` INTEGER NOT NULL,
-    `longitude` INTEGER NOT NULL
+    `longitude` INTEGER NOT NULL,
     `create_date` DATETIME NOT NULL
 );
 
@@ -29,7 +29,7 @@ CREATE TABLE IF NOT EXISTS `pings` (
     `addr_id` INTEGER NOT NULL,
     `latency` TEXT NOT NULL,
     `start_date` DATETIME NOT NULL
-)
+);
 
 CREATE TABLE IF NOT EXISTS `user_sessions` (
     `id` INTEGER PRIMARY KEY,
@@ -37,5 +37,5 @@ CREATE TABLE IF NOT EXISTS `user_sessions` (
     `token` TEXT NOT NULL,
     `create_date` DATETIME NOT NULL,
     `expire_date` DATETIME NOT NULL
-)
+);
 
