@@ -25,7 +25,9 @@ services:
 
   database:
     container_name: pingpath-database-dev
-    image: rqlite/rqlite:8.36.10
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.database.dev
     ports:
       - 4001:4001
     volumes:
