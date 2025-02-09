@@ -16,8 +16,7 @@ const isLogin = ref(false);
 
 onMounted(async () => {
   try {
-    await fetch("/api/auth/dev", { method: "POST" });
-    const response = await fetch("/api/profile/username");
+    const response = await fetch("/api/profile");
     if (!response.ok) throw new Error("Response wasn`t ok :(");
     data.value = JSON.parse(await response.json());
     console.log(data.value);
@@ -59,13 +58,11 @@ const type = {
     <div v-else>
       <HStack class="gap-3">
         <Link href="/profile">
-          {{ data.username }}
+          {{ data!.username }}
           <template #after>
-            <div class="size-8 overflow-hidden">
-              <img
-                :src="data!.imgUrl ? data!.imgUrl : '/flags/af.png'"
-                alt=""
-              />
+            <div class="size-8 overflow-hidden rounded-full">
+              <img v-if="data!.imgUrl" :src="data!.imgUrl" />
+              <div v-else class="bg-neutral/20 h-full w-full" />
             </div>
           </template>
         </Link>
