@@ -5,10 +5,10 @@ import MessagePopup from "./MessagePopup.vue";
 const { convertToRatio } = useMap();
 
 const allPoints = [
-  convertToRatio(-42.187956, 146.496657),
+  convertToRatio(-42.184649, 146.572013),
   convertToRatio(33.958073, -114.34227),
-  convertToRatio(43.981497, -59.324327),
-  convertToRatio(59.793035, -43.941145),
+  convertToRatio(52.368125, 4.889498),
+  convertToRatio(-12.365658, 49.187515),
 ];
 
 interface Point {
@@ -20,6 +20,7 @@ function getPointStyles(point: Point) {
   return {
     left: `${point.x * 100}%`,
     top: `${point.y * 100}%`,
+    transform: "translate(-50%, -50%)",
   };
 }
 </script>
@@ -30,15 +31,18 @@ function getPointStyles(point: Point) {
         src="/map.png"
         class="pointer-events-none relative w-full max-w-[800px] select-none"
       />
-      <button
+      <div
         v-for="(point, id) in allPoints"
         :key="id"
-        class="group absolute -mt-5 -ml-5 size-8 cursor-pointer rounded-full"
+        class="group absolute cursor-pointer"
         :style="getPointStyles(point! as Point)"
       >
-        <div class="bg-accent relative mx-auto size-2 rounded-full" />
-        <MessagePopup />
-      </button>
+        <button class="relative flex flex-col items-center">
+          <div class="absolute -inset-3 size-4 opacity-0" />
+          <div class="bg-accent size-2 rounded-full" />
+          <MessagePopup />
+        </button>
+      </div>
     </div>
   </section>
 </template>
