@@ -34,7 +34,7 @@ function getPointStyles(point: Point) {
       <div
         v-for="(point, id) in allPoints"
         :key="id"
-        class="group absolute"
+        class="group absolute cursor-pointer"
         :style="getPointStyles(point! as Point)"
       >
         <button class="relative flex flex-col items-center">
