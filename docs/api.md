@@ -34,14 +34,8 @@ Data about user profile
 
 ## Features
 
-For all requests outdate, invalid and without session token, response will be like this:
-
-### response
-
-```text
-HTTP/1.1 401 Unauthorized
-...
-```
+- For request without session token backend create guest session
+- For request with invalid session, response is `401 Unauthorized`
 
 ## `GET` `/profile`
 
@@ -49,33 +43,11 @@ Get general profile data
 
 ### request
 
-```text
-GET /profile HTTP/1.1
-Cookie: token=[some active session token]
-...
-```
-
-### response
-
-```text
-HTTP/1.1 200 OK
-Content-Type: application/json
-...
-{
-  "username": "boris2001",  // string
-  "iconUrl": "https://...", // string
-  "type": "Full",           // "Full"
-  "addressAmount": 12       // unsigned number
-}
-```
-
-## `GET` `/profile/username`
-
-### request
+For authorized with github user
 
 ```text
 GET /profile HTTP/1.1
-Cookie: token=[some active session token]
+Cookie: token=[some authorized session token]
 ...
 ```
 
@@ -87,6 +59,76 @@ Content-Type: application/json
 ...
 {
   "username": "boris2001", // string
+  "imgUrl": "https://...", // string | null
+  "type": "Full",          // "Trial" | "Full" 
+  "addressAmount": 12      // unsigned number | null
+}
+```
+
+### request
+
+For guest
+
+```text
+GET /profile HTTP/1.1
+Cookie: token=[some guest session token]
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "username": "guest", // string
+  "type": "Trial"      // "Trial" | "Full"
+}
+```
+
+## `GET` `/profile/username`
+
+### request
+
+For authorized with github session token
+
+```text
+GET /profile HTTP/1.1
+Cookie: token=[some authorized session token]
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "username": "boris2001", // string
+  "imgUrl": "https://..."  // string | null
+}
+```
+
+### request
+
+For guest session
+
+```text
+GET /profile HTTP/1.1
+Cookie: token=[some guest session token]
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "username": "guest" // string
 }
 ```
 
@@ -129,5 +171,54 @@ Content-Type: application/json
   },
   ...
 ]
+```
+
+# Locations
+
+## `GET` `/locations`
+
+Get our locations
+
+### request
+
+```text
+GET /locations HTTP/1.1
+...
+```
+
+### response
+
+```text
+HTTP/1.1 200 OK
+Content-Type: application/json
+...
+{
+  "1.1.1.1": {
+    "city": {                      // object | null
+      "geoname_id": 1              // number
+      "names": {                   // object | null
+        "en": "City name"          // string
+        ...
+      }
+    },
+    "country": {                   // object | null
+      "geoname_id": 1              // number
+      "is_in_european_union": true // boolean
+      "iso_code": "NL"             // string
+      "names": {                   // object | null
+        "en": "Country name"       // string
+        ...
+      }
+    },
+    "location": {                  // object | null
+      "accuracy_radius": 20        // number
+      "latitude": 52.3759          // number
+      "longitude": 4.8975          // number
+      "metro_code": 1              // number | null
+      "time_zone": "TZ/name"       // string
+    }
+  },
+  ...
+}
 ```
 

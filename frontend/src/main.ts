@@ -3,7 +3,7 @@ import { createRouter, createWebHistory, RouterView } from "vue-router";
 import Index from "./pages/index.vue";
 import Profile from "./pages/profile.vue";
 import notFound from "./pages/notFound.vue";
-
+import Pricing from "./pages/pricing.vue";
 import "./main.css";
 
 const router = createRouter({
@@ -11,6 +11,7 @@ const router = createRouter({
   routes: [
     { path: "/", component: Index },
     { path: "/profile", component: Profile },
+    { path: "/pricing", component: Pricing },
     { path: "/notfound", component: notFound },
     { path: "/:catchAll(.*)", redirect: "/notfound" },
   ],

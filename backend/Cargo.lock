@@ -59,9 +59,9 @@ dependencies = [
 
 [[package]]
 name = "axum-cookie"
-version = "0.2.0"
+version = "0.2.1"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "ac6803bd33dc1065e5f73d93c6f752fd019a7c0fe59b9e49e107e29c0a2be0c8"
+checksum = "ecfee54e0071b6050b6b7c47c42e1345a7f9855d2e270ea0f706015150845915"
 dependencies = [
  "axum-core",
  "cookie-rs",
@@ -107,9 +107,9 @@ dependencies = [
 
 [[package]]
 name = "bytes"
-version = "1.9.0"
+version = "1.10.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "325918d6fe32f23b19878fe4b34794ae41fc19ddbe53b10571a4874d44ffd39b"
+checksum = "f61dac84819c6588b558454b194026eb1f09c293b9036ae9b159e74e73ab6cf9"
 
 [[package]]
 name = "cfg-if"
@@ -124,6 +124,7 @@ dependencies = [
  "anyhow",
  "axum",
  "axum-cookie",
+ "maxminddb",
  "serde",
  "serde_json",
  "tokio",
@@ -131,9 +132,9 @@ dependencies = [
 
 [[package]]
 name = "cookie-rs"
-version = "0.2.1"
+version = "0.3.0"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "c1ee006414d709940b650c419ab49a32b0c5e3187c2930c9fda422ffc6c590b5"
+checksum = "543f200270b5bb92a22a5c24ee0d2810382df54f7c29aa481be92dc5cb57f3a8"
 
 [[package]]
 name = "fnv"
@@ -271,6 +272,15 @@ dependencies = [
 ]
 
 [[package]]
+name = "ipnetwork"
+version = "0.20.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "bf466541e9d546596ee94f9f69590f89473455f88372423e0008fc1a7daf100e"
+dependencies = [
+ "serde",
+]
+
+[[package]]
 name = "itoa"
 version = "1.0.14"
 source = "registry+https://github.com/rust-lang/crates.io-index"
@@ -293,6 +303,18 @@ name = "matchit"
 version = "0.8.4"
 source = "registry+https://github.com/rust-lang/crates.io-index"
 checksum = "47e1ffaa40ddd1f3ed91f717a33c8c0ee23fff369e3aa8772b9605cc1d22f4c3"
+
+[[package]]
+name = "maxminddb"
+version = "0.24.0"
+source = "registry+https://github.com/rust-lang/crates.io-index"
+checksum = "d6087e5d8ea14861bb7c7f573afbc7be3798d3ef0fae87ec4fd9a4de9a127c3c"
+dependencies = [
+ "ipnetwork",
+ "log",
+ "memchr",
+ "serde",
+]
 
 [[package]]
 name = "memchr"
@@ -341,9 +363,9 @@ dependencies = [
 
 [[package]]
 name = "once_cell"
-version = "1.20.2"
+version = "1.20.3"
 source = "registry+https://github.com/rust-lang/crates.io-index"
-checksum = "1261fe7e33c73b354eab43b1273a57c8f967d0391e80353e51f764ac02cf6775"
+checksum = "945462a4b81e43c4e3ba96bd7b49d834c6f61198356aa858733bc4acf3cbe62e"
 
 [[package]]
 name = "percent-encoding"

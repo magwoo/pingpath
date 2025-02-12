@@ -22,3 +22,15 @@ services:
       - ./backend:/app
     environment:
       PACKAGE_NAME: client-api
+
+  database:
+    container_name: pingpath-database-dev
+    build:
+      context: .
+      dockerfile: docker/Dockerfile.database.dev
+    ports:
+      - 4001:4001
+    volumes:
+      - ./data/database:/var/database
+    environment:
+      DATA_DIR: /var/data

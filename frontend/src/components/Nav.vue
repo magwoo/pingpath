@@ -20,7 +20,7 @@ import HStack from "./HStack.vue";
         </template>
         Pingpath
       </Link>
-      <Link href="/tarif">Тарифы</Link>
+      <Link href="/pricing">Тарифы</Link>
       <Link href="/about">О нас</Link>
     </HStack>
     <Button>

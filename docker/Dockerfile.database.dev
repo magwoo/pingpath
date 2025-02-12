@@ -1,0 +1,9 @@
+FROM rqlite/rqlite:8.36.10 AS runner
+WORKDIR /runtime
+
+RUN apk add --no-cache curl
+
+ADD migrations migrations
+RUN ls migrations/*.sql | sort | xargs cat >> migration.sql
+
+ENTRYPOINT ["migrations/migration.sh"]

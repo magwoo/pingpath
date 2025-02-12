@@ -4,13 +4,15 @@ import VStack from "../VStack.vue";
 </script>
 
 <template>
-  <VStack
-    class="bg-accent invisible absolute -top-24 -left-14.5 z-10 gap-1 p-2 text-left group-hover:visible"
+  <div
+    class="absolute -top-3 left-1/2 hidden w-max -translate-x-1/2 -translate-y-full justify-center group-hover:flex"
   >
-    <Text class="text-white" size="md"> Нидерланды, <br />Амстердам </Text>
-    <span class="text-success text-xs">задержка: 12мс</span>
-    <div
-      class="bg-accent absolute right-0 -bottom-2 left-0 mx-auto size-5 rotate-45 -z-10"
-    />
-  </VStack>
+    <VStack class="bg-accent z-10 max-w-[200px] gap-1 p-2 text-left">
+      <Text class="text-white" size="md">Нидерланды,<br />Амстердам</Text>
+      <span class="text-success text-xs">задержка: 12мс</span>
+      <div
+        class="bg-accent absolute bottom-0 left-1/2 -z-10 h-3 w-3 -translate-x-1/2 translate-y-1 rotate-45"
+      />
+    </VStack>
+  </div>
 </template>
