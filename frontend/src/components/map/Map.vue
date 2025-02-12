@@ -38,7 +38,7 @@ function getPointStyles(point: Point) {
         :style="getPointStyles(point! as Point)"
       >
         <button class="relative flex flex-col items-center">
-          <div class="absolute -inset-3 size-8 opacity-0" />
+          <div class="absolute -inset-3 size-4 opacity-0" />
           <div class="bg-accent size-2 rounded-full" />
           <MessagePopup />
         </button>
