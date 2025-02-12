@@ -4,7 +4,9 @@ import Link from "@/components/Link.vue";
 </script>
 
 <template>
-  <VStack class="w-full items-center justify-center text-center">
+  <VStack
+    class="h-screen w-full items-center justify-center pb-[15vh] text-center"
+  >
     <h1 class="text-accent text-[200px]">404</h1>
     <VStack class="w-full -translate-y-10 items-center gap-16">
       <span class="text-accent text-3xl">Страница не найдена</span>
