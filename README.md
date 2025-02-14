@@ -14,7 +14,11 @@ _you must have docker to run the project_
   docker compose -f compose.dev.yml up
 ```
 
-_after that, the project will be available at `http://localhost`_
+### Urls
+
+- `http://localhost` - client website
+- `http://localhost/api` - backend api
+- `http://docs.localhost` - backend api docs
 
 ## Production
 

@@ -1,9 +1,14 @@
-http://localhost {
+http://* {
 	handle_path /api/* {
 	    uri strip_prefix /api
 		reverse_proxy api
 	}
 	
 	reverse_proxy localhost:8080
+}
+
+http://docs.* {
+	root * /docs
+	file_server
 }
 

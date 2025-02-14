@@ -1,0 +1,569 @@
+{
+  "info": {
+    "title": "Pingpath backend api",
+    "description": "API uses HTTP as protocol and JSON as content type.\n\n## Authorization\n- Authorization with GitHub and dev for testing.\n\n## Profile Features\n- For requests without a session token, the backend creates a guest session.\n- For requests with an invalid session, the response is \"401 Unauthorized\".\n\n## History Features\n- Returns 401 Unauthorized code if the request does not have a session token cookie or if the session token is invalid.\n",
+    "version": "1.0.0"
+  },
+  "openapi": "3.0.1",
+  "servers": [
+    {
+      "url": "http://localhost/api"
+    }
+  ],
+  "tags": [
+    {
+      "name": "Authorization",
+      "description": "Authorization as Guest, with GitHub or in Dev mode for testing."
+    },
+    {
+      "name": "Profile",
+      "description": "Info about current user"
+    },
+    {
+      "name": "Locations",
+      "description": "Info about our locations"
+    },
+    {
+      "name": "Pings",
+      "description": "Info about pings"
+    },
+    {
+      "name": "Addresses",
+      "description": "Info about used addresses"
+    }
+  ],
+  "security": [
+    {
+      "api_key": []
+    }
+  ],
+  "components": {
+    "schemas": {
+      "UserProfile": {
+        "type": "object",
+        "description": "Detailed user profile info",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "User username",
+            "example": "boris2001"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "Profile image preview url",
+            "nullable": true,
+            "format": "url",
+            "example": "https://avatars.githubusercontent.com/u/114882188?v=4"
+          },
+          "type": {
+            "type": "string",
+            "description": "Access type",
+            "enum": [
+              "Trial",
+              "Full"
+            ],
+            "example": "Full"
+          },
+          "addressAmount": {
+            "type": "integer",
+            "description": "The number of unique addresses used by the user",
+            "nullable": true,
+            "minimum": 0,
+            "example": 12
+          },
+          "createdAt": {
+            "type": "integer",
+            "description": "UTC timestamp when user created",
+            "format": "timestamp",
+            "minimum": 0,
+            "example": 12
+          }
+        }
+      },
+      "UserProfileSummary": {
+        "type": "object",
+        "description": "Summary of user profile info",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "username": {
+            "type": "string",
+            "description": "User username",
+            "example": "boris2001"
+          },
+          "imgUrl": {
+            "type": "string",
+            "description": "Profile image preview url",
+            "nullable": true,
+            "format": "url",
+            "example": "https://avatars.githubusercontent.com/u/114882188?v=4"
+          }
+        }
+      },
+      "HistoryItem": {
+        "type": "object",
+        "description": "One ping request info",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "userId": {
+            "type": "integer",
+            "description": "ID of the user who requested the request",
+            "minimum": 0,
+            "example": 1
+          },
+          "address": {
+            "type": "string",
+            "description": "Target ping address, can be a domain name or ipv4",
+            "examples": [
+              "google.com",
+              "1.1.1.1"
+            ]
+          },
+          "createdAt": {
+            "type": "integer",
+            "description": "UTC timestamp when requested the request",
+            "minimum": 0,
+            "example": 12345789
+          },
+          "pings": {
+            "type": "array",
+            "description": "List of ping info from different location",
+            "items": {
+              "$ref": "#/components/schemas/PingInfo"
+            }
+          }
+        }
+      },
+      "LocationInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "city": {
+            "type": "object",
+            "description": "City name at the few languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "nullable": true,
+                "example": "Amsterdam"
+              },
+              "ru": {
+                "type": "string",
+                "nullable": true,
+                "example": "Амстердам"
+              }
+            }
+          },
+          "isoCode": {
+            "type": "string",
+            "description": "Country iso code",
+            "nullable": true,
+            "example": "NL"
+          },
+          "country": {
+            "type": "object",
+            "description": "Contry name at the few languages",
+            "properties": {
+              "en": {
+                "type": "string",
+                "nullable": true,
+                "example": "Netherlands"
+              },
+              "ru": {
+                "type": "string",
+                "nullable": true,
+                "example": "Нидерланды"
+              }
+            }
+          },
+          "location": {
+            "type": "object",
+            "description": "Location info",
+            "nullable": true,
+            "properties": {
+              "accuracyRadius": {
+                "type": "number",
+                "description": "Accuracy of coordinates",
+                "minimum": 0,
+                "example": 20
+              },
+              "latitude": {
+                "type": "number",
+                "description": "Latitude coordinate",
+                "example": 52.3759
+              },
+              "longitude": {
+                "type": "number",
+                "description": "Longitude coordinate",
+                "example": 4.8975
+              }
+            }
+          }
+        }
+      },
+      "PingInfo": {
+        "type": "object",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "historyId": {
+            "type": "integer",
+            "description": "Related Ping request",
+            "minimum": 0,
+            "example": 1
+          },
+          "locationId": {
+            "type": "integer",
+            "description": "ID of the location from which the pings was made",
+            "minimum": 0,
+            "example": 1
+          },
+          "delays": {
+            "type": "array",
+            "description": "List of delays in milliseconds",
+            "items": {
+              "type": "integer",
+              "minimum": 0
+            }
+          },
+          "startedAt": {
+            "type": "integer",
+            "description": "UTC timestamp when the ping stated",
+            "format": "timestamp",
+            "minimum": 0,
+            "example": 12345789
+          }
+        }
+      },
+      "AddressInfo": {
+        "type": "object",
+        "description": "A unique address created at the first ping",
+        "properties": {
+          "id": {
+            "type": "integer",
+            "description": "Unique ID",
+            "minimum": 0,
+            "example": 1
+          },
+          "address": {
+            "type": "string",
+            "description": "Unique address name",
+            "examples": [
+              "google.com",
+              "1.1.1.1"
+            ]
+          },
+          "createdAt": {
+            "type": "integer",
+            "description": "UTC timestamp when address created",
+            "minimum": 0,
+            "example": 12345789
+          }
+        }
+      }
+    },
+    "securitySchemes": {
+      "api_key": {
+        "type": "apiKey",
+        "in": "cookie",
+        "name": "token"
+      }
+    },
+    "responses": {
+      "InternalServerError": {
+        "description": "Internal server error"
+      }
+    }
+  },
+  "paths": {
+    "/auth": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Authorization (in progress)",
+        "description": "Authorization using GitHub credentials, return `303 See Other` code with github auth page location",
+        "security": [],
+        "responses": {
+          "303": {
+            "description": "Success",
+            "headers": {
+              "Location": {
+                "description": "Github auth page",
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/auth/dev": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Dev signin",
+        "description": "Dev signin for test profile features (debug build only)",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Set-Cookie": {
+                "description": "Dev session token",
+                "schema": {
+                  "type": "string",
+                  "example": "token=123; Path=/"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/auth/guest": {
+      "post": {
+        "tags": [
+          "Authorization"
+        ],
+        "summary": "Guest authorization",
+        "description": "Signin as guest",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "headers": {
+              "Set-Cookie": {
+                "description": "Guest session token",
+                "schema": {
+                  "type": "string",
+                  "example": "token=123; Path=/"
+                }
+              }
+            }
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/profile": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Profile info",
+        "description": "For authorized GitHub user:\nReturns general profile data\n",
+        "responses": {
+          "200": {
+            "description": "Profile data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfile"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/profile/summary": {
+      "get": {
+        "tags": [
+          "Profile"
+        ],
+        "summary": "Profile summary",
+        "description": "For authorized GitHub user:\nReturns summary profile data\n",
+        "responses": {
+          "200": {
+            "description": "Profile summary data response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UserProfileSummary"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/history": {
+      "get": {
+        "tags": [
+          "Pings"
+        ],
+        "summary": "User ping history",
+        "description": "One page can contains 0-100 items, returns an empty list if the page is empty.\n",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "amount",
+            "description": "Amount items at page(max 100), default is 24",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 24
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Items offset, default is 0",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 96
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of history pings",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/HistoryItem"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    },
+    "/locations": {
+      "get": {
+        "tags": [
+          "Locations"
+        ],
+        "summary": "Get our locations",
+        "description": "Returns location data keyed by ipv4 or domain name",
+        "security": [],
+        "responses": {
+          "200": {
+            "description": "Map of locations by ipv4 or domain name",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "1.1.1.1": {
+                      "$ref": "#/components/schemas/LocationInfo"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/addresses": {
+      "get": {
+        "tags": [
+          "Addresses"
+        ],
+        "summary": "User addresses list",
+        "description": "One page can contains 0-100 items, returns an empty list if the page is empty.\n",
+        "parameters": [
+          {
+            "in": "query",
+            "name": "amount",
+            "description": "Amount items at page(max 100), default is 24",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 24
+            }
+          },
+          {
+            "in": "query",
+            "name": "offset",
+            "description": "Items offset, default is 0",
+            "required": false,
+            "schema": {
+              "type": "integer",
+              "example": 96
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "List of user addresses",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/AddressInfo"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized"
+          },
+          "500": {
+            "$ref": "#/components/responses/InternalServerError"
+          }
+        }
+      }
+    }
+  }
+}

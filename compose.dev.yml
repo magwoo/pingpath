@@ -9,6 +9,7 @@ services:
       - 443:443
     volumes:
       - ./frontend:/app
+      - ./docs/api:/docs
       - ./docker/Caddyfile.dev:/etc/Caddyfile
       - ./data/caddy:/data/caddy
 
