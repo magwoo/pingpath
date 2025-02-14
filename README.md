@@ -6,9 +6,11 @@ Project description in progress..
 
 # Setup project
 
-_you must have docker to run the project_
+_you must have docker and compose plugin to run the project_
 
 ## Development
+
+start project at development mode locally
 
 ```sh
   docker compose -f compose.dev.yml up
@@ -19,6 +21,8 @@ _you must have docker to run the project_
 - `http://localhost` - client website
 - `http://localhost/api` - backend api
 - `http://docs.localhost` - backend api docs
+
+> avaliable after start project with [development](#development) mode locally
 
 ## Production
 
