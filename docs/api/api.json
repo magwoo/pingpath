@@ -1,13 +1,13 @@
 {
   "info": {
-    "title": "Backend API",
+    "title": "Pingpath backend api",
     "description": "API uses HTTP as protocol and JSON as content type.\n\n## Authorization\n- Authorization with GitHub and dev for testing.\n\n## Profile Features\n- For requests without a session token, the backend creates a guest session.\n- For requests with an invalid session, the response is \"401 Unauthorized\".\n\n## History Features\n- Returns 401 Unauthorized code if the request does not have a session token cookie or if the session token is invalid.\n",
     "version": "1.0.0"
   },
   "openapi": "3.0.1",
   "servers": [
     {
-      "url": "http://localhost"
+      "url": "http://localhost/api"
     }
   ],
   "tags": [
@@ -407,7 +407,7 @@
         }
       }
     },
-    "/profile/username": {
+    "/profile/summary": {
       "get": {
         "tags": [
           "Profile"
