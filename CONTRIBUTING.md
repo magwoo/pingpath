@@ -2,9 +2,6 @@
 
 Thank you for your interest in contributing to this project! To ensure a smooth and efficient workflow, please follow these guidelines and we won't mind if you help improve this guide.
 
-## 👷‍♂️ Api docs
-Check api docs here [api.md](/docs/api.md)
-
 ---
 
 ## 📌 1. How to Take an Issue
