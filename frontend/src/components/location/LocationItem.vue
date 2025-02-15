@@ -1,7 +1,6 @@
 <script setup lang="ts">
 import HStack from "../HStack.vue";
 import Text from "../Text.vue";
-import VStack from "../VStack.vue";
 </script>
 
 <template>
@@ -10,7 +9,7 @@ import VStack from "../VStack.vue";
       <div class="bg-success size-3 shrink-0 rounded-full" />
       <HStack class="items-center gap-4">
         <img src="/flags/ru.png" class="h-6" />
-        <span class="text-accent/75 text-xl font-medium">Москва</span>
+        <Text variant="accent" class="opacity-75">Москва</Text>
       </HStack>
     </HStack>
     <HStack class="h-7 items-end gap-1">

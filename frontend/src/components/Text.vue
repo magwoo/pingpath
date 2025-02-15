@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const TEXT_SIZES = {
   sm: "text-md font-medium",
-  md: "text-xl font-medium",
+  md: "text-lg font-medium",
   lg: "text-3xl font-semibold",
   "2xl": "text-6xl font-bold",
 };
