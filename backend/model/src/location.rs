@@ -11,5 +11,5 @@ pub struct Location {
     city: Option<String>,
     latitude: f64,
     longitude: f64,
-    create_date: NaiveDateTime,
+    created_at: NaiveDateTime,
 }

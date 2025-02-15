@@ -7,6 +7,6 @@ pub mod github;
 pub struct User {
     id: i64,
     username: String,
-    create_date: NaiveDateTime,
+    created_at: NaiveDateTime,
     github: UserGithub,
 }

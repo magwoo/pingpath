@@ -3,7 +3,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `username` TEXT NOT NULL DEFAULT('guest'),
     `github_token` TEXT,
     `icon_url` TEXT,
-    `create_date` DATETIME NOT NULL
+    `created_at` DATETIME NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `locations` (
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `locations` (
     `city` TEXT,
     `latitude` INTEGER NOT NULL,
     `longitude` INTEGER NOT NULL,
-    `create_date` DATETIME NOT NULL
+    `created_at` DATETIME NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `user_addrs` (
@@ -21,21 +21,21 @@ CREATE TABLE IF NOT EXISTS `user_addrs` (
     `name` TEXT,
     `addr` TEXT NOT NULL,
     `user_id` INTEGER NOT NULL,
-    `create_date` DATETIME NOT NULL
+    `created_at` DATETIME NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `pings` (
     `id` INTEGER PRIMARY KEY,
     `addr_id` INTEGER NOT NULL,
     `latency` TEXT NOT NULL,
-    `start_date` DATETIME NOT NULL
+    `started_at` DATETIME NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS `user_sessions` (
     `id` INTEGER PRIMARY KEY,
     `user_id` INTEGER NOT NULL,
     `token` TEXT NOT NULL,
-    `create_date` DATETIME NOT NULL,
+    `created_at` DATETIME NOT NULL,
     `expire_date` DATETIME NOT NULL
 );
 
