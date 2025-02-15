@@ -14,7 +14,7 @@ pub struct User {
 }
 
 impl User {
-    pub async fn create_guest(db: Database) -> anyhow::Result<Self> {
+    pub async fn create_guest(db: Database) -> anyhow::Result<i64> {
         let now = Datetime::now();
 
         let query = query!(
@@ -24,7 +24,9 @@ impl User {
         )
         .context("failed to parse query")?;
 
-        let id = db.exec(query).await?.last_insert_id();
+        db.exec(query)
+            .await
+            .map(|r| r.last_insert_id().expect("Row must be inserted"))
     }
 }
 
