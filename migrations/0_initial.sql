@@ -2,7 +2,7 @@ CREATE TABLE IF NOT EXISTS `users` (
     `id` INTEGER PRIMARY KEY,
     `username` TEXT NOT NULL DEFAULT('guest'),
     `github_token` TEXT,
-    `icon_url` TEXT,
+    `img_url` TEXT,
     `created_at` DATETIME NOT NULL
 );
 
