@@ -36,7 +36,7 @@ impl FromRow for User {
             id: row.get("id")?,
             username: row.get("username")?,
             created_at: row.get("created_at")?,
-            github: match row.get_opt::<String>("token")?.is_some() {
+            github: match row.get_opt::<String>("guthub_token")?.is_some() {
                 true => Some(UserGithub::from_row(row)?),
                 false => None,
             },
