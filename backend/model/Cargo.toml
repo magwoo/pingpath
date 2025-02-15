@@ -6,3 +6,5 @@ edition = "2021"
 [dependencies]
 anyhow.workspace = true
 chrono.workspace = true
+rqlite-rs = { version = "0.6.0", features = ["macros", "rustls-tls"], default-features = false }
+serde.workspace = true
