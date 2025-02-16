@@ -3,12 +3,13 @@ http://* {
 	    uri strip_prefix /api
 		reverse_proxy api
 	}
+
+	handle_path /docs* {
+	    uri strip_prefix /docs
+		root * /docs
+		file_server
+	}
 	
 	reverse_proxy localhost:8080
-}
-
-http://docs.* {
-	root * /docs
-	file_server
 }
 
