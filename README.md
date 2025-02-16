@@ -20,7 +20,7 @@ start project at development mode locally
 
 - `http://localhost` - client website
 - `http://localhost/api` - backend api
-- `http://docs.localhost` - backend api docs
+- `http://localhost/docs` - backend api docs
 
 > avaliable after start project with [development](#development) mode locally
 
