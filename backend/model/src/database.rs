@@ -1,25 +1,34 @@
 use anyhow::{Context, Result};
-use rqlite_rs::{prelude::*, query::RqliteQuery};
+use rqlite_rs::prelude::*;
+use rqlite_rs::query::RqliteQuery;
+use std::sync::Arc;
 
-static mut INSTANCE: Option<RqliteClient> = None;
+#[derive(Clone)]
+pub struct Rqlite(Arc<RqliteClient>);
 
-#[derive(Clone, Copy, Default)]
-pub struct Rqlite;
-
-pub trait Database: Sized + Default {
+pub trait Database: Sized {
     fn from_env() -> Result<Self>;
 
-    fn inner<'a>() -> &'a RqliteClient;
+    fn exec(&self, q: RqliteQuery) -> impl std::future::Future<Output = Result<QueryResult>>;
 
-    fn exec(q: RqliteQuery) -> impl std::future::Future<Output = Result<QueryResult>>;
-
-    fn fetch<T: FromRow>(q: RqliteQuery) -> impl std::future::Future<Output = Result<Vec<T>>>;
+    fn fetch<T: FromRow>(
+        &self,
+        q: RqliteQuery,
+    ) -> impl std::future::Future<Output = Result<Vec<T>>>;
 
     fn fetch_optional<T: FromRow>(
+        &self,
         q: RqliteQuery,
     ) -> impl std::future::Future<Output = Result<Option<T>>>;
 
-    fn fetch_one<T: FromRow>(q: RqliteQuery) -> impl std::future::Future<Output = Result<T>>;
+    fn fetch_one<T: FromRow>(&self, q: RqliteQuery)
+        -> impl std::future::Future<Output = Result<T>>;
+}
+
+impl Rqlite {
+    pub fn inner(&self) -> &RqliteClient {
+        &self.0
+    }
 }
 
 impl Database for Rqlite {
@@ -31,29 +40,22 @@ impl Database for Rqlite {
             .build()
             .context("failed to build database")?;
 
-        unsafe { INSTANCE = Some(inner) }
-
-        Ok(Self)
+        Ok(Self(Arc::new(inner)))
     }
 
-    #[inline]
-    fn inner<'a>() -> &'a RqliteClient {
-        inner()
-    }
-
-    async fn exec(q: RqliteQuery) -> Result<QueryResult> {
+    async fn exec(&self, q: RqliteQuery) -> Result<QueryResult> {
         let query = q.query.clone();
 
-        Self::inner()
+        self.inner()
             .exec(q)
             .await
             .with_context(|| format!("failed to exec query({query})"))
     }
 
-    async fn fetch<T: FromRow>(q: RqliteQuery) -> Result<Vec<T>> {
+    async fn fetch<T: FromRow>(&self, q: RqliteQuery) -> Result<Vec<T>> {
         let query = q.query.clone();
 
-        Self::inner()
+        self.inner()
             .fetch(q)
             .await
             .with_context(|| format!("failed to fetch query({query})"))?
@@ -61,10 +63,11 @@ impl Database for Rqlite {
             .context("failed to type")
     }
 
-    async fn fetch_optional<T: FromRow>(q: RqliteQuery) -> Result<Option<T>> {
+    async fn fetch_optional<T: FromRow>(&self, q: RqliteQuery) -> Result<Option<T>> {
         let query = q.query.clone();
 
-        let row = Self::inner()
+        let row = self
+            .inner()
             .fetch(q)
             .await
             .with_context(|| format!("failed to fetch query({query})"))?
@@ -76,10 +79,11 @@ impl Database for Rqlite {
         Ok(row)
     }
 
-    async fn fetch_one<T: FromRow>(q: RqliteQuery) -> Result<T> {
+    async fn fetch_one<T: FromRow>(&self, q: RqliteQuery) -> Result<T> {
         let query = q.query.clone();
 
-        let row = Self::inner()
+        let row = self
+            .inner()
             .fetch(q)
             .await
             .with_context(|| format!("failed to fetch query({query})"))?
@@ -88,13 +92,5 @@ impl Database for Rqlite {
             .with_context(|| format!("missing fetch_one row on query({query})"))?;
 
         row.into_typed().context("failed to type")
-    }
-}
-
-#[inline]
-fn inner<'a>() -> &'a RqliteClient {
-    #[allow(static_mut_refs)]
-    unsafe {
-        INSTANCE.as_ref().expect("Database instance uninitialized")
     }
 }
