@@ -11,13 +11,15 @@ pub trait Database: Sized + Default {
 
     fn inner<'a>() -> &'a RqliteClient;
 
-    async fn exec(q: RqliteQuery) -> Result<QueryResult>;
+    fn exec(q: RqliteQuery) -> impl std::future::Future<Output = Result<QueryResult>>;
 
-    async fn fetch<T: FromRow>(q: RqliteQuery) -> Result<Vec<T>>;
+    fn fetch<T: FromRow>(q: RqliteQuery) -> impl std::future::Future<Output = Result<Vec<T>>>;
 
-    async fn fetch_optional<T: FromRow>(q: RqliteQuery) -> Result<Option<T>>;
+    fn fetch_optional<T: FromRow>(
+        q: RqliteQuery,
+    ) -> impl std::future::Future<Output = Result<Option<T>>>;
 
-    async fn fetch_one<T: FromRow>(q: RqliteQuery) -> Result<T>;
+    fn fetch_one<T: FromRow>(q: RqliteQuery) -> impl std::future::Future<Output = Result<T>>;
 }
 
 impl Database for Rqlite {
