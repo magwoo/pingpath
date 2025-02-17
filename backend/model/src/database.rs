@@ -93,5 +93,8 @@ impl Database for Rqlite {
 
 #[inline]
 fn inner<'a>() -> &'a RqliteClient {
-    unsafe { INSTANCE.as_ref().expect("Database instance uninitialized") }
+    #[allow(static_mut_refs)]
+    unsafe {
+        INSTANCE.as_ref().expect("Database instance uninitialized")
+    }
 }

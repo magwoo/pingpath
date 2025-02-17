@@ -1,20 +1,27 @@
 use anyhow::Context;
 use rqlite_rs::{query, FromRow};
+use serde::{Deserialize, Serialize};
+use std::future::Future;
 
-use self::github::UserGithub;
 use crate::prelude::*;
 
-pub mod github;
+pub mod profile;
 
-pub struct User {
-    id: i64,
-    username: String,
-    created_at: Datetime,
-    github: Option<UserGithub>,
+pub trait GenericUser: Sized {
+    fn from_id(id: i64) -> impl Future<Output = anyhow::Result<Option<Self>>>;
 }
 
-impl User {
-    pub async fn create_guest(db: Database) -> anyhow::Result<i64> {
+#[derive(Clone, Serialize, Deserialize)]
+#[serde(rename_all = "camelCase")]
+pub struct User<Ext = (), Db: Database = Rqlite> {
+    id: i64,
+    #[serde(flatten)]
+    ext: Ext,
+    database: Db,
+}
+
+impl<Db: Database> User<(), Db> {
+    pub async fn create_guest() -> anyhow::Result<Self> {
         let now = Datetime::now();
 
         let query = query!(
@@ -24,22 +31,24 @@ impl User {
         )
         .context("failed to parse query")?;
 
-        db.exec(query)
+        let id = Db::exec(query)
             .await
-            .map(|r| r.last_insert_id().expect("Row must be inserted"))
+            .map(|r| r.last_insert_id().expect("Row must be inserted"))?;
+
+        Ok(Self {
+            id,
+            ext: (),
+            database: Db::default(),
+        })
     }
 }
 
-impl FromRow for User {
+impl<EXT: FromRow, Db: Database> FromRow for User<EXT, Db> {
     fn from_row(row: rqlite_rs::Row) -> Result<Self, rqlite_rs::IntoTypedError> {
         Ok(Self {
             id: row.get("id")?,
-            username: row.get("username")?,
-            created_at: row.get("created_at")?,
-            github: match row.get_opt::<String>("guthub_token")?.is_some() {
-                true => Some(UserGithub::from_row(row)?),
-                false => None,
-            },
+            ext: EXT::from_row(row)?,
+            database: Db::default(),
         })
     }
 }

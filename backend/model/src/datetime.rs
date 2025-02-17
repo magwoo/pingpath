@@ -1,4 +1,4 @@
-use chrono::{Duration, NaiveDateTime};
+use chrono::NaiveDateTime;
 use rqlite_rs::query::arguments::{RqliteArgument, RqliteArgumentRaw};
 use std::fmt;
 use std::ops::{Deref, DerefMut};
@@ -11,7 +11,6 @@ pub struct Datetime(NaiveDateTime);
 
 impl Datetime {
     const FMT: &str = "%Y-%m-%dT%H:%M:%SZ";
-    const TZ_OFFSET: Duration = Duration::hours(3);
 
     pub fn new(dt: NaiveDateTime) -> Self {
         Self(dt)
