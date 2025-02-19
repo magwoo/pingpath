@@ -3,10 +3,11 @@ use axum::response::IntoResponse;
 use axum::routing::get;
 use axum::{Json, Router};
 use axum_cookie::CookieManager;
+use model::prelude::*;
 
 use crate::auth::DEV_TOKEN;
 
-pub fn get_nest() -> Router {
+pub fn get_nest() -> Router<Rqlite> {
     Router::new()
         .route("/", get(get_profile))
         .route("/summary", get(get_profile_summary))

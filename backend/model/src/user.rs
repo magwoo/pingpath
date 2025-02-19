@@ -8,20 +8,19 @@ use crate::prelude::*;
 pub mod profile;
 
 pub trait GenericUser: Sized {
-    fn from_id(id: i64) -> impl Future<Output = anyhow::Result<Option<Self>>>;
+    fn from_id(id: i64, db: impl Database) -> impl Future<Output = anyhow::Result<Option<Self>>>;
 }
 
 #[derive(Clone, Serialize, Deserialize)]
 #[serde(rename_all = "camelCase")]
-pub struct User<Ext = (), Db: Database = Rqlite> {
-    id: i64,
+pub struct User<Ext = ()> {
+    pub id: i64,
     #[serde(flatten)]
-    ext: Ext,
-    database: Db,
+    pub ext: Ext,
 }
 
-impl<Db: Database> User<(), Db> {
-    pub async fn create_guest() -> anyhow::Result<Self> {
+impl User {
+    pub async fn create_guest(db: impl Database) -> anyhow::Result<Self> {
         let now = Datetime::now();
 
         let query = query!(
@@ -31,24 +30,20 @@ impl<Db: Database> User<(), Db> {
         )
         .context("failed to parse query")?;
 
-        let id = Db::exec(query)
+        let id = db
+            .exec(query)
             .await
             .map(|r| r.last_insert_id().expect("Row must be inserted"))?;
 
-        Ok(Self {
-            id,
-            ext: (),
-            database: Db::default(),
-        })
+        Ok(Self { id, ext: () })
     }
 }
 
-impl<EXT: FromRow, Db: Database> FromRow for User<EXT, Db> {
+impl<EXT: FromRow> FromRow for User<EXT> {
     fn from_row(row: rqlite_rs::Row) -> Result<Self, rqlite_rs::IntoTypedError> {
         Ok(Self {
             id: row.get("id")?,
             ext: EXT::from_row(row)?,
-            database: Db::default(),
         })
     }
 }

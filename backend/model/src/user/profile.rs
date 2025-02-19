@@ -5,7 +5,7 @@ use serde::{Deserialize, Serialize};
 use super::{GenericUser, User};
 use crate::prelude::*;
 
-#[derive(Serialize, Deserialize)]
+#[derive(Clone, Serialize, Deserialize)]
 pub struct WithProfile {
     username: String,
     img_url: Option<String>,
@@ -13,12 +13,12 @@ pub struct WithProfile {
     github_token: Option<String>,
 }
 
-impl<Db: Database> GenericUser for User<WithProfile, Db> {
-    async fn from_id(id: i64) -> anyhow::Result<Option<Self>> {
+impl GenericUser for User<WithProfile> {
+    async fn from_id(id: i64, db: impl Database) -> anyhow::Result<Option<Self>> {
         let query =
             query!("SELECT * FROM users WHERE id = ?", id).context("failed to parse query")?;
 
-        Db::fetch_optional(query)
+        db.fetch_optional(query)
             .await
             .with_context(|| format!("id: {id}"))
     }

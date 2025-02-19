@@ -6,7 +6,7 @@ use std::sync::Arc;
 #[derive(Clone)]
 pub struct Rqlite(Arc<RqliteClient>);
 
-pub trait Database: Sized {
+pub trait Database: Sized + Clone {
     fn from_env() -> Result<Self>;
 
     fn exec(&self, q: RqliteQuery) -> impl std::future::Future<Output = Result<QueryResult>>;
