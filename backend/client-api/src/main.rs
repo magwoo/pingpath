@@ -2,6 +2,7 @@ use anyhow::Context;
 use axum::middleware::map_request;
 use axum::Router;
 use axum_cookie::CookieLayer;
+use model::prelude::{Database, Rqlite};
 
 mod auth;
 mod locations;
@@ -20,7 +21,8 @@ async fn main() -> anyhow::Result<()> {
     let router = Router::new()
         .merge(without_auth)
         .merge(with_auth)
-        .layer(CookieLayer::strict());
+        .layer(CookieLayer::strict())
+        .with_state(Rqlite::from_env().context("failed to create database from env")?);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:80")
         .await

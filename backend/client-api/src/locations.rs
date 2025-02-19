@@ -3,13 +3,14 @@ use axum::response::IntoResponse;
 use axum::routing::get;
 use axum::{Json, Router};
 use maxminddb::geoip2::city::{City, Country, Location};
+use model::prelude::*;
 use serde::{Deserialize, Serialize};
 use std::collections::BTreeMap;
 
 const OUR_LOCATIONS: [&str; 3] = ["217.144.185.110", "45.143.203.154", "95.215.108.47"];
 const GEOIP_DATA: &[u8] = include_bytes!("../geoip.mmdb");
 
-pub fn get_nest() -> Router {
+pub fn get_nest() -> Router<Rqlite> {
     Router::new().route("/", get(get_our_locations))
 }
 

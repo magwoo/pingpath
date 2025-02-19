@@ -23,6 +23,7 @@ services:
       - ./backend:/app
     environment:
       PACKAGE_NAME: client-api
+      DATABASE_URL: database:4001
 
   database:
     container_name: pingpath-database-dev

@@ -5,9 +5,10 @@ edition = "2021"
 
 [dependencies]
 anyhow.workspace = true
+serde.workspace = true
 axum = "0.8.1"
 axum-cookie = "0.2.1"
 maxminddb = "0.24.0"
-serde = { version = "1.0.217", features = ["derive"] }
+model = { version = "0.1.0", path = "../model" }
 serde_json = "1.0.138"
 tokio = { version = "1.43.0", features = ["rt-multi-thread", "macros"] }

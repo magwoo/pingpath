@@ -4,3 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+anyhow.workspace = true
+axum = { version = "0.8.1", features = ["macros"] }
+chrono.workspace = true
+rqlite-rs = { version = "0.5.0", features = ["macros", "rustls-tls"], default-features = false }
+serde.workspace = true
