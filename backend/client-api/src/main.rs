@@ -10,6 +10,8 @@ mod profile;
 
 #[tokio::main]
 async fn main() -> anyhow::Result<()> {
+    let database = Rqlite::from_env().context("failed to create database from env")?;
+
     let without_auth = Router::new()
         .nest("/auth", auth::get_nest())
         .nest("/locations", locations::get_nest());
@@ -22,7 +24,7 @@ async fn main() -> anyhow::Result<()> {
         .merge(without_auth)
         .merge(with_auth)
         .layer(CookieLayer::strict())
-        .with_state(Rqlite::from_env().context("failed to create database from env")?);
+        .with_state(database);
 
     let listener = tokio::net::TcpListener::bind("0.0.0.0:80")
         .await
