@@ -1,6 +1,7 @@
 use anyhow::{Context, Result};
 use rqlite_rs::prelude::*;
 use rqlite_rs::query::RqliteQuery;
+use std::future::Future;
 use std::sync::Arc;
 
 #[derive(Clone)]
@@ -9,20 +10,14 @@ pub struct Rqlite(Arc<RqliteClient>);
 pub trait Database: Sized + Clone {
     fn from_env() -> Result<Self>;
 
-    fn exec(&self, q: RqliteQuery) -> impl std::future::Future<Output = Result<QueryResult>>;
+    fn exec(&self, q: RqliteQuery) -> impl Future<Output = Result<QueryResult>>;
 
-    fn fetch<T: FromRow>(
-        &self,
-        q: RqliteQuery,
-    ) -> impl std::future::Future<Output = Result<Vec<T>>>;
+    fn fetch<T: FromRow>(&self, q: RqliteQuery) -> impl Future<Output = Result<Vec<T>>>;
 
-    fn fetch_optional<T: FromRow>(
-        &self,
-        q: RqliteQuery,
-    ) -> impl std::future::Future<Output = Result<Option<T>>>;
+    fn fetch_optional<T: FromRow>(&self, q: RqliteQuery)
+        -> impl Future<Output = Result<Option<T>>>;
 
-    fn fetch_one<T: FromRow>(&self, q: RqliteQuery)
-        -> impl std::future::Future<Output = Result<T>>;
+    fn fetch_one<T: FromRow>(&self, q: RqliteQuery) -> impl Future<Output = Result<T>>;
 }
 
 impl Rqlite {
