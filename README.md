@@ -13,7 +13,7 @@ _you must have docker and compose plugin to run the project_
 start project at development mode locally
 
 ```sh
-  docker compose -f compose.dev.yml up
+docker compose -f compose.dev.yml up --build
 ```
 
 ### Urls
