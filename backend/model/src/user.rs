@@ -8,7 +8,7 @@ use crate::prelude::*;
 pub mod profile;
 
 pub trait GenericUser: Sized {
-    fn from_id(id: i64, db: impl Database) -> impl Future<Output = anyhow::Result<Option<Self>>>;
+    fn from_id(id: i64, db: &impl Database) -> impl Future<Output = anyhow::Result<Option<Self>>>;
 }
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -24,7 +24,7 @@ impl User {
         self.id
     }
 
-    pub async fn create_guest(db: impl Database) -> anyhow::Result<Self> {
+    pub async fn create_guest(db: &impl Database) -> anyhow::Result<Self> {
         let now = Datetime::now();
 
         let query = query!(

@@ -27,13 +27,23 @@ async fn dev_auth(cookie: CookieManager) -> Result<impl IntoResponse, StatusCode
     Ok(StatusCode::OK)
 }
 
-async fn guest_auth<D: Database>(State(db): State<D>) -> Result<impl IntoResponse, StatusCode> {
-    let user = User::create_guest(db).await.map_err(|e| {
+async fn guest_auth<D: Database>(
+    cookie: CookieManager,
+    State(db): State<D>,
+) -> Result<impl IntoResponse, StatusCode> {
+    let user = User::create_guest(&db).await.map_err(|e| {
         eprintln!("failed to create guest: {e:?}");
         StatusCode::INTERNAL_SERVER_ERROR
     })?;
 
-    Ok(Json(user))
+    let session = Session::new(user, &db).await.map_err(|e| {
+        eprintln!("failed to create session: {e:?}");
+        StatusCode::INTERNAL_SERVER_ERROR
+    })?;
+
+    cookie.set(Cookie::new("token", session.token().to_string()).with_path("/"));
+
+    Ok(StatusCode::OK)
 }
 
 pub async fn auth_middleware<B>(

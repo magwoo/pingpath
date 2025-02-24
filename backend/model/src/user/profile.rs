@@ -14,7 +14,7 @@ pub struct WithProfile {
 }
 
 impl GenericUser for User<WithProfile> {
-    async fn from_id(id: i64, db: impl Database) -> anyhow::Result<Option<Self>> {
+    async fn from_id(id: i64, db: &impl Database) -> anyhow::Result<Option<Self>> {
         let query =
             query!("SELECT * FROM users WHERE id = ?", id).context("failed to parse query")?;
 

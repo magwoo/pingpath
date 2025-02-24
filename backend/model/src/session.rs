@@ -11,7 +11,8 @@ static HASH_SALT: LazyLock<String> =
     LazyLock::new(|| std::env::var("HASH_SALT").expect("missing `HASH_SALT` env var"));
 
 pub trait GenericSession: Sized {
-    fn new(user: impl Into<User>, db: impl Database) -> impl Future<Output = anyhow::Result<Self>>;
+    fn new(user: impl Into<User>, db: &impl Database)
+        -> impl Future<Output = anyhow::Result<Self>>;
 }
 
 #[derive(Clone, Serialize, Deserialize)]
@@ -26,7 +27,7 @@ pub struct Session<Ext = ()> {
 }
 
 impl GenericSession for Session {
-    async fn new(user: impl Into<User>, db: impl Database) -> anyhow::Result<Self> {
+    async fn new(user: impl Into<User>, db: &impl Database) -> anyhow::Result<Self> {
         let user_id = user.into().id();
         let now = Datetime::now();
         let expire_date = now + Duration::days(7);
@@ -71,5 +72,9 @@ impl Session {
         hasher.update(&*HASH_SALT);
 
         format!("{:x}", hasher.finalize())
+    }
+
+    pub fn token(&self) -> &str {
+        &self.token
     }
 }
