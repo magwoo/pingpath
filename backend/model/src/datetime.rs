@@ -1,7 +1,7 @@
-use chrono::NaiveDateTime;
+use chrono::{Duration, NaiveDateTime};
 use rqlite_rs::query::arguments::{RqliteArgument, RqliteArgumentRaw};
 use std::fmt;
-use std::ops::{Deref, DerefMut};
+use std::ops::{Add, Deref, DerefMut};
 
 mod de;
 mod se;
@@ -38,6 +38,14 @@ impl Deref for Datetime {
 impl DerefMut for Datetime {
     fn deref_mut(&mut self) -> &mut Self::Target {
         &mut self.0
+    }
+}
+
+impl Add<Duration> for Datetime {
+    type Output = Self;
+
+    fn add(self, rhs: Duration) -> Self::Output {
+        Self(self.0.add(rhs))
     }
 }
 

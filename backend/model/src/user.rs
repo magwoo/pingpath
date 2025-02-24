@@ -20,6 +20,10 @@ pub struct User<Ext = ()> {
 }
 
 impl User {
+    pub fn id(&self) -> i64 {
+        self.id
+    }
+
     pub async fn create_guest(db: impl Database) -> anyhow::Result<Self> {
         let now = Datetime::now();
 
