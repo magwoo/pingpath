@@ -31,7 +31,7 @@ CREATE TABLE IF NOT EXISTS `pings` (
     `started_at` DATETIME NOT NULL
 );
 
-CREATE TABLE IF NOT EXISTS `user_sessions` (
+CREATE TABLE IF NOT EXISTS `sessions` (
     `id` INTEGER PRIMARY KEY,
     `user_id` INTEGER NOT NULL,
     `token` TEXT NOT NULL,
