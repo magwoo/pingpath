@@ -21,6 +21,7 @@ services:
       dockerfile: docker/Dockerfile.api.dev
     volumes:
       - ./backend:/app
+      - cargo-cache:/usr/local/cargo
     environment:
       PACKAGE_NAME: client-api
       DATABASE_URL: database:4001
@@ -36,3 +37,7 @@ services:
       - ./data/database:/var/database
     environment:
       DATA_DIR: /var/data
+
+
+volumes:
+  cargo-cache:
